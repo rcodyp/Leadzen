@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Janjatiya Pride — Fresh Deck (Design Sample)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Mukta:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --type-display: 130px;
+    --type-title: 74px;
+    --type-subtitle: 42px;
+    --type-body: 31px;
+    --type-small: 25px;
+    --type-kicker: 24px;
+    --pad-x: 112px;
+    --pad-top: 92px;
+    --pad-bottom: 84px;
+    /* palette — warm, refined */
+    --paper: #f3ead9;
+    --paper-dim: #e7d8bd;
+    --ink: #20180f;
+    --ink-2: #2c2114;
+    --gold: #e0a528;
+    --gold-soft: #f0c86a;
+    --clay: #c25a2c;
+    --maroon: #6c2a20;
+    --maroon-deep: #481712;
+    --sand: #cdb88f;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; background:#0b0805; }
+  deck-stage:not(:defined){ visibility:hidden; }
+
+  deck-stage > section{
+    overflow:hidden;
+    background: var(--ink);
+    color: var(--paper);
+    font-family:'Mukta', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- photo placeholder + drop zone ---------- */
+  .bg{ position:absolute; inset:0; }
+  .photo{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(80% 60% at 22% 16%, rgba(240,200,106,.30), transparent 60%),
+      radial-gradient(90% 80% at 86% 96%, rgba(108,42,32,.55), transparent 62%),
+      linear-gradient(155deg, #7a4a23 0%, #5a2a1a 46%, #2a140c 100%);
+  }
+  .photo.warm{
+    background:
+      radial-gradient(75% 60% at 80% 14%, rgba(240,200,106,.34), transparent 60%),
+      radial-gradient(90% 80% at 14% 92%, rgba(72,23,18,.7), transparent 60%),
+      linear-gradient(150deg, #b5562f 0%, #7a2e20 48%, #34140d 100%);
+  }
+  .photo.forest{
+    background:
+      radial-gradient(80% 60% at 78% 80%, rgba(224,165,40,.26), transparent 60%),
+      radial-gradient(90% 80% at 12% 14%, rgba(40,52,30,.7), transparent 60%),
+      linear-gradient(150deg, #555a2c 0%, #34401f 50%, #16190d 100%);
+  }
+  /* faint Warli-style diamond weave over photos for cultural texture */
+  .weave{ position:absolute; inset:0; opacity:.16; mix-blend-mode:overlay;
+    background-image:
+      linear-gradient(45deg, var(--paper) 25%, transparent 25%, transparent 75%, var(--paper) 75%),
+      linear-gradient(45deg, var(--paper) 25%, transparent 25%, transparent 75%, var(--paper) 75%);
+    background-size:40px 40px; background-position:0 0, 20px 20px; }
+  .scrim-b{ position:absolute; inset:0; background:linear-gradient(0deg, rgba(20,12,7,.92) 2%, rgba(20,12,7,.42) 40%, rgba(20,12,7,.06) 68%); }
+  .scrim-l{ position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,12,7,.9) 0%, rgba(20,12,7,.5) 40%, rgba(20,12,7,0) 70%); }
+
+  image-slot{ position:absolute; inset:0; width:auto; height:auto; }
+  image-slot::part(empty){ color: rgba(243,234,217,.82); }
+  image-slot::part(frame){ background: transparent; }
+
+  .frame{ position:absolute; inset:0; padding: var(--pad-top) var(--pad-x) var(--pad-bottom); display:flex; flex-direction:column; pointer-events:none; }
+  .scrim-b, .scrim-l, .weave{ pointer-events:none; }
+
+  /* gold motif strip — simple triangle band */
+  .band{ height:14px; align-self:stretch;
+    background:
+      conic-gradient(from 90deg at 50% 0, transparent 0 135deg, var(--gold) 135deg 225deg, transparent 225deg 360deg);
+    background-size:28px 14px; opacity:.95; }
+
+  /* placeholder photo label */
+  .shot{
+    position:absolute; left: var(--pad-x); top: var(--pad-top);
+    font-family:'IBM Plex Mono', monospace; font-size:24px; letter-spacing:.06em;
+    color: rgba(243,234,217,.62); border:1px solid rgba(243,234,217,.3);
+    padding:9px 15px; border-radius:2px; text-transform:uppercase; pointer-events:none;
+    background:rgba(20,12,7,.34); backdrop-filter:blur(2px); z-index:3; }
+
+  /* type primitives */
+  .kicker{ font-family:'IBM Plex Mono', monospace; font-size: var(--type-kicker);
+    letter-spacing:.3em; text-transform:uppercase; color: var(--gold-soft); font-weight:500; align-self:flex-start; }
+  .kicker.ink{ color: var(--clay); }
+  .title{ font-family:'Rozha One', serif; font-weight:400; line-height:1.02; font-size: var(--type-title); letter-spacing:.005em; }
+  .display{ font-family:'Rozha One', serif; font-weight:400; line-height:.98; font-size: var(--type-display); }
+  .lead{ font-size: var(--type-subtitle); line-height:1.32; font-weight:300; color: var(--paper-dim); }
+  .body{ font-size: var(--type-body); line-height:1.5; font-weight:400; color: var(--paper-dim); max-width:25ch; }
+  .rule{ height:3px; width:128px; background: var(--gold); border:0; }
+  .counter{ font-family:'IBM Plex Mono', monospace; font-size: var(--type-small); letter-spacing:.2em; color: var(--gold-soft); }
+  .credit{ font-family:'IBM Plex Mono', monospace; font-size: var(--type-small); letter-spacing:.08em; color: rgba(243,234,217,.7); line-height:1.7; align-self:flex-start; }
+
+  /* gov emblem placeholder */
+  .emblem{ display:flex; align-items:center; gap:18px; }
+  .emblem .seal{ width:58px; height:58px; border-radius:50%; border:2px solid var(--gold);
+    display:grid; place-items:center; font-family:'IBM Plex Mono',monospace; font-size:24px; color:var(--gold-soft); background:rgba(20,12,7,.35); }
+  .emblem .lines{ font-family:'IBM Plex Mono',monospace; font-size:25px; letter-spacing:.16em; line-height:1.5; text-transform:uppercase; color:var(--paper); }
+  .emblem .lines small{ display:block; font-size:24px; color: rgba(243,234,217,.7); letter-spacing:.2em; }
+
+  /* paper variant */
+  section.paper{ background:
+      radial-gradient(120% 80% at 100% 0, rgba(224,165,40,.16), transparent 55%),
+      linear-gradient(160deg, #f6efe0, #ece0c9); color: var(--ink); }
+  section.paper .body{ color: #5a4830; }
+  section.paper .lead{ color:#5a4830; }
+  section.paper .credit{ color:#7a6647; }
+
+  /* divider */
+  section.divider{ background:
+      radial-gradient(90% 70% at 12% 12%, rgba(224,165,40,.18), transparent 55%),
+      linear-gradient(150deg, var(--maroon) 0%, var(--maroon-deep) 100%); }
+  .ghost-num{ position:absolute; right:40px; bottom:-160px; font-family:'Rozha One',serif;
+    font-size:760px; line-height:.7; color: rgba(243,234,217,.08); pointer-events:none; }
+
+  /* split */
+  .split{ position:absolute; inset:0; display:grid; grid-template-columns: 42% 58%; }
+  .split .pane-img{ position:relative; overflow:hidden; }
+  .split .pane-txt{ padding: var(--pad-top) var(--pad-x) var(--pad-bottom) 84px; display:flex; flex-direction:column; }
+
+  .three{ display:grid; grid-template-columns:repeat(3,1fr); gap:46px; }
+  .three .lbl{ font-family:'IBM Plex Mono',monospace; font-size:24px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+  .three p{ margin:0; font-size:27px; line-height:1.42; color:var(--paper-dim); }
+
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:40px; }
+  .stats .n{ font-family:'Rozha One',serif; font-size:82px; line-height:1; color:var(--gold-soft); }
+  .stats .t{ font-size:25px; line-height:1.35; color:var(--paper-dim); margin-top:10px; }
+
+  .grid6{ display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:1fr; gap:0; border-top:2px solid rgba(194,90,44,.4); }
+  .grid6 .cell{ padding:38px 44px 34px 0; border-bottom:1px solid rgba(108,42,32,.22); }
+  .grid6 .cell .cn{ font-family:'IBM Plex Mono',monospace; font-size:24px; color:var(--clay); letter-spacing:.18em; }
+  .grid6 .cell h4{ font-family:'Rozha One',serif; font-weight:400; font-size:40px; margin:10px 0 12px; color:var(--maroon); }
+  .grid6 .cell p{ margin:0; font-size:24px; line-height:1.4; color:#5a4830; }
+
+  .spacer{ flex:1; }
+
+  @media (prefers-reduced-motion: no-preference){
+    [data-deck-active] .anim{ animation: rise .6s both; }
+    [data-deck-active] .anim2{ animation: rise .6s .12s both; }
+    [data-deck-active] .anim3{ animation: rise .6s .24s both; }
+    @keyframes rise{ from{ opacity:0; transform: translateY(22px); } to{ opacity:1; transform:none; } }
+  }
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+  <!-- 1 · COVER -->
+  <section data-label="Cover" data-screen-label="Cover">
+    <div class="bg photo"></div>
+    <div class="weave"></div>
+    <image-slot id="s-cover" placeholder="Drag a hero photo — tribal portrait, golden hour" fit="cover"></image-slot>
+    <div class="scrim-b"></div>
+    <div class="frame">
+      <div class="emblem anim">
+        <div class="seal">MoTA</div>
+        <div class="lines">Ministry of Tribal Affairs<small>Government of India</small></div>
+      </div>
+      <div class="spacer"></div>
+      <p class="kicker anim2">A Communication Strategy</p>
+      <h1 class="display anim2" style="margin:18px 0 0; max-width:18ch;">Janjatiya Pride<br>that defines India.</h1>
+      <div class="band anim2" style="width:300px; margin:26px 0 0;"></div>
+      <p class="lead anim3" style="margin:28px 0 0; max-width:36ch;">Pan-India grassroots outreach — from government corridors to community streets.</p>
+      <div class="spacer"></div>
+      <p class="credit anim3">Presented by Degree 360 Solutions Pvt. Ltd. &nbsp;·&nbsp; To the Ministry of Tribal Affairs, GoI</p>
+    </div>
+  </section>
+
+  <!-- 2 · STATEMENT -->
+  <section data-label="Where policy meets people" data-screen-label="Where policy meets people">
+    <div class="bg photo warm"></div>
+    <div class="weave"></div>
+    <image-slot id="s-statement" placeholder="Drag a photo — community gathering, wide" fit="cover"></image-slot>
+    <div class="scrim-b"></div>
+    <div class="frame">
+      <p class="kicker anim">The Premise</p>
+      <div class="spacer"></div>
+      <h2 class="title anim2" style="font-size:104px; max-width:17ch;">Where policy meets people.</h2>
+      <hr class="rule anim3" style="margin:42px 0 0;">
+      <p class="lead anim3" style="margin:34px 0 0; max-width:34ch;">A strategy that lives where the Ministry's intent reaches the communities it is built for.</p>
+    </div>
+  </section>
+
+  <!-- 3 · SECTION DIVIDER -->
+  <section class="divider" data-label="Part Two" data-screen-label="Part Two — Campaign Route 1">
+    <div class="ghost-num">02</div>
+    <div class="frame">
+      <p class="counter" style="color:var(--sand);">PART TWO</p>
+      <div class="band" style="width:220px; margin:24px 0 0;"></div>
+      <div class="spacer"></div>
+      <h2 class="display" style="max-width:16ch;">Janjatiya Pride that defines India.</h2>
+      <p class="lead" style="margin:30px 0 0; max-width:40ch; color:var(--sand);">A communication strategy for the Ministry of Tribal Affairs — Campaign Route 1.</p>
+    </div>
+  </section>
+
+  <!-- 4 · OPENING TRUTH -->
+  <section data-label="The Opening Truth" data-screen-label="The Opening Truth">
+    <div class="split">
+      <div class="pane-img">
+        <div class="bg photo"></div><div class="weave"></div>
+        <image-slot id="s-opening" placeholder="Drag a photo — elder, close portrait" fit="cover"></image-slot>
+        <div class="scrim-b"></div>
+        <span class="shot" style="top:auto; bottom:var(--pad-bottom);">Photo · elder portrait</span>
+      </div>
+      <div class="pane-txt">
+        <p class="kicker anim">The Opening Truth</p>
+        <div class="spacer"></div>
+        <h3 class="title anim2" style="font-size:60px; max-width:18ch;">India is not merely supported by its Janjatiya communities.</h3>
+        <p class="lead anim3" style="margin:30px 0 0; max-width:30ch;">It is shaped, sustained, and defined by them. Yet the nation largely doesn't know this.</p>
+        <p class="body anim3" style="margin:26px 0 0; max-width:34ch; color:var(--gold-soft);">That is not a failure of the communities. It is a failure of communication. This strategy exists to fix that.</p>
+        <div class="spacer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · PROBLEM (paper) -->
+  <section class="paper" data-label="The Communication Problem" data-screen-label="The Communication Problem">
+    <div class="frame">
+      <p class="kicker ink anim">The Problem</p>
+      <h3 class="title anim2" style="margin:22px 0 0; max-width:20ch;">The story has been told wrong.</h3>
+      <div class="band anim2" style="width:180px; margin:26px 0 0;"></div>
+      <div class="spacer"></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:end;">
+        <p class="body anim3" style="max-width:38ch; font-size:30px;">For decades, communication about tribal communities followed one template: sympathy, support, schemes. The tone was upliftment. The imagery was need.</p>
+        <p class="anim3" style="margin:0; max-width:30ch; font-family:'Rozha One',serif; font-size:42px; line-height:1.22; color:var(--maroon);">104 million citizens who define India are perceived as recipients, not contributors.</p>
+      </div>
+      <hr class="rule anim3" style="margin:46px 0 0;">
+      <p class="anim3" style="margin:22px 0 0; font-size:28px; color:#5a4830; max-width:60ch;">This is not a policy problem. It is a communication problem — and communication problems have communication solutions.</p>
+    </div>
+  </section>
+
+  <!-- 6 · STRATEGIC REFRAME -->
+  <section class="divider" data-label="The Strategic Reframe" data-screen-label="The Strategic Reframe">
+    <div class="frame">
+      <p class="kicker anim">The Strategic Reframe</p>
+      <div class="spacer"></div>
+      <p class="lead anim2" style="margin:0 0 8px; color:var(--sand);">From</p>
+      <h2 class="display anim2" style="font-size:118px; color:rgba(243,234,217,.42);">beneficiaries</h2>
+      <h2 class="display anim3" style="font-size:118px; color:var(--gold-soft);">to definers.</h2>
+      <p class="lead anim3" style="margin:40px 0 0; max-width:42ch; color:var(--paper-dim);">Janjatiya communities are not beneficiaries of India's growth — they are its architects. The challenge is not impact, but perception.</p>
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+  <!-- 7 · PILLAR -->
+  <section data-label="Pillar One — Identity" data-screen-label="Pillar One — Identity">
+    <div class="split">
+      <div class="pane-img">
+        <div class="bg photo forest"></div><div class="weave"></div>
+        <image-slot id="s-pillar" placeholder="Drag a photo — craft / loom detail" fit="cover"></image-slot>
+        <div class="scrim-b"></div>
+        <span class="shot" style="top:auto; bottom:var(--pad-bottom);">Photo · craft detail</span>
+      </div>
+      <div class="pane-txt">
+        <p class="counter anim">01 / 04</p>
+        <p class="kicker anim" style="margin:18px 0 0;">Pillar One</p>
+        <h3 class="title anim2" style="margin:10px 0 0; font-size:84px;">Identity</h3>
+        <p class="lead anim2" style="margin:14px 0 38px; max-width:30ch; font-size:34px; color:var(--gold-soft);">Who we are.</p>
+        <div class="three anim3">
+          <div><div class="lbl">Objective</div><p>Build national understanding of communities as custodians of India's oldest living knowledge systems.</p></div>
+          <div><div class="lbl">Core Message</div><p>Not a chapter in India's history — the foundation everything else is built on.</p></div>
+          <div><div class="lbl">Tone</div><p>Proud. Declarative. Never explanatory.</p></div>
+        </div>
+        <div class="spacer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · DATA -->
+  <section data-label="104 Million" data-screen-label="104 Million — the numbers">
+    <div class="bg" style="background:radial-gradient(80% 70% at 80% 10%, rgba(224,165,40,.14), transparent 55%), linear-gradient(158deg,var(--ink-2),var(--ink));"></div>
+    <div class="frame">
+      <p class="kicker anim">Why This Matters</p>
+      <div class="spacer"></div>
+      <div class="anim2" style="display:flex; align-items:baseline; gap:34px;">
+        <span class="display" style="font-size:300px; color:var(--gold-soft); line-height:.8;">104</span>
+        <span class="title" style="font-size:88px;">million</span>
+      </div>
+      <p class="lead anim2" style="margin:26px 0 0; max-width:40ch;">citizens who define India's ecology, culture, economy and identity — and are barely known for it.</p>
+      <div class="spacer"></div>
+      <div class="stats anim3">
+        <div><div class="n">700+</div><div class="t">distinct tribes</div></div>
+        <div><div class="n">22+</div><div class="t">constitutional languages</div></div>
+        <div><div class="n">28%</div><div class="t">of forest area stewarded</div></div>
+        <div><div class="n">40+</div><div class="t">tiger habitats protected</div></div>
+      </div>
+      <p class="credit anim3" style="margin:30px 0 0;">Source · Wildlife Institute of India / NTCA 2023</p>
+    </div>
+  </section>
+
+  <!-- 9 · QUOTE -->
+  <section data-label="The Voice India Trusts" data-screen-label="Quote — the voice India trusts">
+    <div class="bg photo warm"></div>
+    <div class="weave"></div>
+    <image-slot id="s-quote" placeholder="Drag a photo — forest canopy / river" fit="cover"></image-slot>
+    <div class="scrim-b" style="background:linear-gradient(0deg, rgba(20,12,7,.94) 8%, rgba(20,12,7,.6) 50%, rgba(20,12,7,.25) 100%);"></div>
+    <div class="frame">
+      <p class="kicker anim">The Voice India Trusts</p>
+      <div class="spacer"></div>
+      <blockquote class="anim2" style="margin:0; font-family:'Rozha One',serif; font-size:62px; line-height:1.22; max-width:24ch;">Forests are the lungs of the earth. And the Adivasi communities are its immune system — protecting, regenerating, sustaining what the world is finally beginning to understand it needs.</blockquote>
+      <div class="band anim3" style="width:200px; margin:34px 0 18px;"></div>
+      <p class="credit anim3">Sunita Narain &nbsp;·&nbsp; Centre for Science &amp; Environment, 2021</p>
+    </div>
+  </section>
+
+  <!-- 10 · CHANNELS (paper) -->
+  <section class="paper" data-label="The Communication Channels" data-screen-label="The Communication Channels">
+    <div class="frame">
+      <p class="kicker ink anim">Where This Strategy Lives</p>
+      <h3 class="title anim2" style="margin:20px 0 28px; max-width:24ch;">Six channels. One narrative.</h3>
+      <div class="grid6 anim3">
+        <div class="cell"><span class="cn">01</span><h4>Social Media</h4><p>Daily presence. Organic reach. Community building.</p></div>
+        <div class="cell"><span class="cn">02</span><h4>Earned Media</h4><p>Press, editorial, broadcast. Third-party credibility.</p></div>
+        <div class="cell"><span class="cn">03</span><h4>Vernacular</h4><p>12 states. 8+ languages. 200+ regional creators.</p></div>
+        <div class="cell"><span class="cn">04</span><h4>Representation</h4><p>Ministry, community and expert voices. One message.</p></div>
+        <div class="cell"><span class="cn">05</span><h4>Publishing</h4><p>Long-form features, data stories, documentary series.</p></div>
+        <div class="cell"><span class="cn">06</span><h4>Outreach</h4><p>Events and activations. Communication without a screen.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · CLOSING -->
+  <section data-label="Closing" data-screen-label="Closing">
+    <div class="bg photo"></div>
+    <div class="weave"></div>
+    <image-slot id="s-closing" placeholder="Drag a photo — forest at dawn, wide" fit="cover"></image-slot>
+    <div class="scrim-b"></div>
+    <div class="frame">
+      <p class="kicker anim">In Closing</p>
+      <div class="spacer"></div>
+      <h2 class="display anim2" style="font-size:96px; max-width:20ch;">For India. For her Janjatiya soul.</h2>
+      <p class="lead anim3" style="margin:32px 0 0; max-width:42ch;">104 million citizens define India's forests, economy and future. India doesn't know this yet. Our job is to make sure it does.</p>
+      <div class="spacer"></div>
+      <p class="credit anim3" style="max-width:60ch;">Kapil Singh · Marketing Head, Degree 360 Solutions Pvt. Ltd.<br>011-41508791 · Presented to the Ministry of Tribal Affairs, Government of India</p>
+    </div>
+  </section>
+
+</deck-stage>
+<script src="image-slot.js"></script>
+<script src="deck-stage.js"></script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Janjatiya Pride - Design Sample";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  @page { margin: 0.5cm; }\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks, whose
+  // slides are sized to the page.
+  try {
+    if (!document.querySelector('deck-stage')) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a body padding inset only when we also zero the
+      // @page margin; computed style can't tell us (it reports screen media),
+      // so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /body\s*\{[^}]*padding/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

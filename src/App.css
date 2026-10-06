@@ -1,0 +1,4 @@
+html, body, #root { min-height: 100%; margin: 0; }
+body { background: #0A0812; }
+.legacy-react-page { min-height: 100vh; }
+.legacy-react-page:empty { min-height: 100vh; }

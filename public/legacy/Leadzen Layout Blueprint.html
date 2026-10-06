@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leadzen — Layout & Section Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #f4f2ee;
+    --paper-2: #fbfaf8;
+    --ink: #2b2a27;
+    --ink-soft: #6f6d67;
+    --line: #c9c6bf;
+    --line-strong: #a6a39b;
+    --fill: #e6e3dc;
+    --fill-2: #ddd9d0;
+    --blue: oklch(0.55 0.13 250);
+    --blue-soft: oklch(0.93 0.03 250);
+    --amber: oklch(0.78 0.13 80);
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(var(--line) 0.7px, transparent 0.7px);
+    background-size: 22px 22px;
+  }
+
+  /* ---------- layout shell ---------- */
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 120px;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(244, 242, 238, 0.86);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 40px;
+  }
+  .topbar-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: 18px;
+  }
+  .brand .dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background: var(--blue);
+    transform: rotate(45deg);
+  }
+  .brand small {
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .jump {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .jump a {
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .jump a:hover { border-color: var(--line-strong); color: var(--ink); }
+
+  /* ---------- intro / reasoning ---------- */
+  .hero-note {
+    margin: 8px 0 64px;
+  }
+  .kicker {
+    font-family: "Caveat", cursive;
+    font-size: 26px;
+    color: var(--blue);
+    transform: rotate(-1.5deg);
+    display: inline-block;
+  }
+  .hero-note h1 {
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 6px 0 18px;
+    max-width: 16ch;
+  }
+  .hero-note p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    margin: 0 0 14px;
+  }
+  .reasoning {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 34px;
+  }
+  .r-card {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 18px 20px;
+  }
+  .r-card h4 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+  }
+  .r-card p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+
+  /* ---------- section scaffold ---------- */
+  .sec {
+    margin: 0 0 70px;
+    scroll-margin-top: 90px;
+  }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .sec-num {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: #fff;
+    background: var(--ink);
+    border-radius: 6px;
+    padding: 3px 8px;
+    letter-spacing: 0.04em;
+  }
+  .sec-title {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .sec-note {
+    font-family: "Caveat", cursive;
+    font-size: 19px;
+    color: var(--blue);
+    margin-left: auto;
+    transform: rotate(-0.8deg);
+  }
+  .sec-meta {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    line-height: 1.5;
+    max-width: 80ch;
+  }
+  .sec-meta b { color: var(--ink); font-weight: 600; }
+  .ref {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--blue);
+    background: var(--blue-soft);
+    border-radius: 999px;
+    padding: 2px 9px;
+    margin-left: 2px;
+  }
+
+  /* ---------- wireframe primitives ---------- */
+  .wf {
+    background: var(--paper-2);
+    border: 1.5px solid var(--line-strong);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .wf.dark { background: #2b2a27; border-color: #2b2a27; }
+  .wf.tint { background: var(--blue-soft); border-color: var(--blue); border-style: dashed; }
+
+  .bar {
+    height: 12px;
+    border-radius: 4px;
+    background: var(--fill);
+  }
+  .bar.s { height: 9px; }
+  .bar.dark { background: #4a4843; }
+  .w90 { width: 90%; } .w80 { width: 80%; } .w70 { width: 70%; }
+  .w60 { width: 60%; } .w50 { width: 50%; } .w40 { width: 40%; }
+  .w30 { width: 30%; } .w20 { width: 20%; }
+
+  .head-bar {
+    height: 22px;
+    border-radius: 5px;
+    background: var(--fill-2);
+  }
+  .head-bar.big { height: 30px; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 34px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border: 1.5px solid var(--line-strong);
+    color: var(--ink-soft);
+    background: #fff;
+  }
+  .pill.solid { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .pill.accent { background: var(--amber); color: #2b2a27; border-color: var(--amber); }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1.2px solid var(--line-strong);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    background: #fff;
+  }
+
+  .imgph {
+    background:
+      repeating-linear-gradient(45deg, var(--fill) 0 8px, transparent 8px 16px),
+      var(--paper-2);
+    border: 1.2px solid var(--line-strong);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    font-family: "Caveat", cursive;
+    font-size: 17px;
+    text-align: center;
+    min-height: 70px;
+  }
+  .imgph.dark {
+    background:
+      repeating-linear-gradient(45deg, #3a3833 0 8px, transparent 8px 16px),
+      #2b2a27;
+    border-color: #4a4843;
+    color: #9b988f;
+  }
+
+  .box {
+    border: 1.2px solid var(--line);
+    border-radius: 9px;
+    background: #fff;
+    padding: 14px;
+  }
+  .box.dark { background: #34322d; border-color: #4a4843; }
+
+  .ic {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: var(--fill-2);
+    flex: none;
+  }
+  .ic.accent { background: var(--amber); }
+  .ic.blue { background: var(--blue); }
+
+  .stack { display: flex; flex-direction: column; gap: 9px; }
+  .row { display: flex; gap: 12px; }
+  .row.center { align-items: center; }
+  .between { justify-content: space-between; }
+  .wrap { flex-wrap: wrap; }
+  .grow > * { flex: 1; }
+
+  .label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-family: "Caveat", cursive;
+    font-size: 15px;
+    color: var(--blue);
+    background: var(--paper-2);
+    padding: 0 6px;
+    border-radius: 5px;
+  }
+  .rel { position: relative; }
+
+  /* nav wireframe */
+  .nav-wf {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .nav-logo { width: 96px; height: 20px; border-radius: 5px; background: var(--fill-2); }
+  .nav-links { display: flex; gap: 18px; margin: 0 auto; }
+  .nav-links .bar { width: 52px; }
+
+  /* hero variants */
+  .variant-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .variant {
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--paper-2);
+  }
+  .variant-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    background: #fff;
+  }
+  .variant-tag .v {
+    font-weight: 800;
+    font-size: 12px;
+    color: #fff;
+    background: var(--blue);
+    border-radius: 5px;
+    padding: 2px 8px;
+  }
+  .variant-tag .t { font-weight: 600; font-size: 13.5px; }
+  .variant-tag .d { font-size: 12px; color: var(--ink-soft); margin-left: auto; }
+  .variant-body { padding: 20px; }
+
+  @media (min-width: 860px) {
+    .variant-grid.cols { grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+  /* bento */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 96px;
+    gap: 12px;
+  }
+  .bento .cell {
+    border: 1.2px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bento .cell.dark { background: #2b2a27; border-color: #2b2a27; }
+  .bento .cell.accent { background: var(--amber); border-color: var(--amber); }
+  .span2 { grid-column: span 2; }
+  .row2 { grid-row: span 2; }
+
+  .num-step {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--line-strong);
+    letter-spacing: -0.02em;
+  }
+
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 4px 0 40px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .sw { width: 16px; height: 12px; border-radius: 3px; border: 1.2px solid var(--line-strong); }
+  .sw.fill { background: var(--fill); }
+  .sw.img { background: repeating-linear-gradient(45deg, var(--fill) 0 5px, transparent 5px 10px); }
+  .sw.accent { background: var(--amber); border-color: var(--amber); }
+  .sw.dark { background: #2b2a27; border-color: #2b2a27; }
+
+  .end-note {
+    margin-top: 30px;
+    background: var(--paper-2);
+    border: 1.5px dashed var(--line-strong);
+    border-radius: 14px;
+    padding: 24px 26px;
+  }
+  .end-note h3 { margin: 0 0 10px; font-size: 18px; }
+  .end-note p { margin: 0 0 8px; font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+  .end-note ol { margin: 10px 0 0; padding-left: 20px; color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
+
+  .divider {
+    text-align: center;
+    margin: 8px 0 40px;
+    font-family: "Caveat", cursive;
+    color: var(--ink-soft);
+    font-size: 17px;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: var(--line-strong);
+    vertical-align: middle;
+    margin: 0 12px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        Leadzen
+        <small>Layout Blueprint</small>
+      </div>
+      <nav class="jump">
+        <a href="#flow">Homepage flow</a>
+        <a href="#hero-opts">Hero options</a>
+        <a href="#svc-opts">Services options</a>
+        <a href="#next">Next steps</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="page">
+
+    <!-- INTRO / REASONING -->
+    <section class="hero-note">
+      <span class="kicker">low-fi · structure only · copy comes later</span>
+      <h1>Layout &amp; section blueprint for a lead-gen site.</h1>
+      <p>I studied the references you sent — Belkins, CIENCE, Callbox, MarketJoy, Lusha, Apollo, EasyLeadz — plus the two Dribbble shots. They share a remarkably consistent skeleton. Below is that skeleton drawn as wireframes: a full homepage flow you can react to, with alternate framings for the two sections that carry the most weight.</p>
+      <p>Everything here is intentionally gray and label-driven. We lock the <b>framing</b> first, then pour in the real niche, copy, imagery and brand color one section at a time.</p>
+
+      <div class="reasoning">
+        <div class="r-card">
+          <h4>What's shared across refs</h4>
+          <p>Hero with floating proof cards → logo strip → a hard-numbers band → a bento/grid of services → numbered process → case-study metrics → testimonials → pricing → closing CTA. Trust is front-loaded everywhere.</p>
+        </div>
+        <div class="r-card">
+          <h4>From the Dribbble shots</h4>
+          <p>The framing language: a centered hero floating metric + photo tiles, rounded "folder" cards, and a mixed-size <b>bento grid</b> for features. Black + one accent on warm white.</p>
+        </div>
+        <div class="r-card">
+          <h4>What's deliberately TBD</h4>
+          <p>Exact niche, headlines, body copy, real logos/photos, and the final accent color. Amber shown is a placeholder. Pick layouts now; we fill meaning later.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="legend">
+      <span><i class="sw fill"></i> text / UI block</span>
+      <span><i class="sw img"></i> image / media placeholder</span>
+      <span><i class="sw accent"></i> accent (color TBD)</span>
+      <span><i class="sw dark"></i> dark panel</span>
+      <span style="font-family:'Caveat',cursive;color:var(--blue);font-size:15px;">blue handwriting = my notes</span>
+    </div>
+
+    <h2 id="flow" style="font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 4px;">Part 1 — Full homepage flow</h2>
+    <p style="margin:0 0 36px;font-size:13.5px;color:var(--ink-soft);max-width:70ch;">Top to bottom, the recommended stack. Each block notes the layout pattern and which reference it leans on.</p>
+
+    <!-- 01 NAV -->
+    <section class="sec" id="nav">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h3 class="sec-title">Sticky navigation</h3>
+        <span class="sec-note">keep one clear CTA</span>
+      </div>
+      <p class="sec-meta">Logo left · 4–5 links center · single high-contrast CTA right ("Book a call"). Optional "Watch demo" ghost button. <span class="ref">Apollo · Callbox · Projectify</span></p>
+      <div class="wf">
+        <div class="nav-wf">
+          <div class="nav-logo"></div>
+          <div class="nav-links">
+            <div class="bar s w90"></div>
+            <div class="bar s w90"></div>
+            <div class="bar s w90"></div>
+            <div class="bar s w90"></div>
+          </div>
+          <div class="pill">Watch demo</div>
+          <div class="pill solid">Book a call</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 HERO -->
+    <section class="sec" id="hero">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <h3 class="sec-title">Hero — floating proof</h3>
+        <span class="sec-note">recommended framing ↓</span>
+      </div>
+      <p class="sec-meta">Centered headline + subhead + dual CTA, surrounded by floating tiles: a <b>big metric card</b>, two photo tiles, and a partner card. Front-loads social proof before scroll. <span class="ref">Projectify · Lusha</span> &nbsp;·&nbsp; 3 alternates in Part 2.</p>
+      <div class="wf tint" style="padding:30px;">
+        <div class="row between" style="align-items:flex-start;">
+          <div class="box" style="width:200px;">
+            <div class="bar s w40" style="margin-bottom:8px;"></div>
+            <div class="head-bar big" style="width:70%;margin-bottom:8px;"></div>
+            <div class="stack"><div class="bar s w90"></div><div class="bar s w80"></div></div>
+          </div>
+          <div class="stack" style="align-items:center;flex:1;padding:0 18px;">
+            <div class="head-bar big" style="width:78%;"></div>
+            <div class="head-bar big" style="width:62%;"></div>
+            <div class="stack" style="align-items:center;margin:6px 0 4px;width:100%;">
+              <div class="bar s w50"></div>
+              <div class="bar s w40"></div>
+            </div>
+            <div class="row center" style="gap:10px;">
+              <div class="pill accent">Get started</div>
+              <div class="pill">See how it works</div>
+            </div>
+          </div>
+          <div class="stack" style="width:200px;gap:12px;">
+            <div class="imgph dark" style="height:90px;">team photo</div>
+            <div class="box"><div class="row center"><div class="ic blue"></div><div class="stack" style="flex:1"><div class="bar s w80"></div><div class="bar s w50"></div></div></div></div>
+          </div>
+        </div>
+        <div class="imgph" style="height:54px;margin-top:18px;">center "experience the difference" media tile</div>
+      </div>
+    </section>
+
+    <!-- 03 LOGO STRIP -->
+    <section class="sec" id="logos">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <h3 class="sec-title">Trusted-by logo strip</h3>
+        <span class="sec-note">grayscale, slow marquee</span>
+      </div>
+      <p class="sec-meta">One line: "Trusted by 500+ revenue teams". 5–6 client logos, muted/monochrome, optional auto-scroll. <span class="ref">Belkins · CIENCE · Projectify</span></p>
+      <div class="wf">
+        <div class="stack" style="align-items:center;gap:16px;">
+          <div class="bar s w20"></div>
+          <div class="row" style="gap:42px;justify-content:center;width:100%;">
+            <div class="imgph" style="width:120px;height:34px;">logo</div>
+            <div class="imgph" style="width:120px;height:34px;">logo</div>
+            <div class="imgph" style="width:120px;height:34px;">logo</div>
+            <div class="imgph" style="width:120px;height:34px;">logo</div>
+            <div class="imgph" style="width:120px;height:34px;">logo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 RESULTS BAND -->
+    <section class="sec" id="stats">
+      <div class="sec-head">
+        <span class="sec-num">04</span>
+        <h3 class="sec-title">Results band — hard numbers</h3>
+        <span class="sec-note">proof in 4 stats</span>
+      </div>
+      <p class="sec-meta">Dark full-bleed band, 3–4 oversized stats (meetings booked · pipeline generated · reply rate · clients). The single most persuasive strip on a lead-gen page. <span class="ref">Belkins · Callbox · CIENCE</span></p>
+      <div class="wf dark">
+        <div class="grid4">
+          <div class="stack" style="gap:8px;"><div class="head-bar big dark" style="background:#4a4843;width:70%;"></div><div class="bar s dark w90"></div></div>
+          <div class="stack" style="gap:8px;"><div class="head-bar big dark" style="background:#4a4843;width:70%;"></div><div class="bar s dark w90"></div></div>
+          <div class="stack" style="gap:8px;"><div class="head-bar big dark" style="background:#4a4843;width:70%;"></div><div class="bar s dark w90"></div></div>
+          <div class="stack" style="gap:8px;"><div class="head-bar big dark" style="background:var(--amber);width:70%;"></div><div class="bar s dark w90"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 SERVICES BENTO -->
+    <section class="sec" id="services">
+      <div class="sec-head">
+        <span class="sec-num">05</span>
+        <h3 class="sec-title">Services — bento grid</h3>
+        <span class="sec-note">recommended framing ↓</span>
+      </div>
+      <p class="sec-meta">Section title + mixed-size bento: one tall feature cell, a couple wide cells, smaller support cells. Each = icon + title + one line. Mix a dark cell and an accent cell for rhythm. <span class="ref">Projectify (bento) · Lusha</span> &nbsp;·&nbsp; 3 alternates in Part 2.</p>
+      <div class="wf">
+        <div class="stack" style="align-items:center;margin-bottom:18px;gap:8px;">
+          <div class="head-bar" style="width:42%;"></div>
+          <div class="bar s w30"></div>
+        </div>
+        <div class="bento">
+          <div class="cell row2">
+            <div class="ic accent"></div>
+            <div class="bar w70"></div>
+            <div class="stack" style="gap:7px;"><div class="bar s w90"></div><div class="bar s w80"></div><div class="bar s w60"></div></div>
+            <div class="imgph" style="flex:1;min-height:40px;">visual</div>
+          </div>
+          <div class="cell span2">
+            <div class="row center"><div class="ic"></div><div class="bar w50"></div></div>
+            <div class="bar s w80"></div>
+          </div>
+          <div class="cell">
+            <div class="ic"></div>
+            <div class="bar s w80"></div>
+          </div>
+          <div class="cell dark">
+            <div class="ic accent"></div>
+            <div class="bar s dark w80"></div>
+          </div>
+          <div class="cell">
+            <div class="ic"></div>
+            <div class="bar s w70"></div>
+          </div>
+          <div class="cell span2">
+            <div class="row center"><div class="ic"></div><div class="bar w40"></div></div>
+            <div class="bar s w90"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 PROCESS -->
+    <section class="sec" id="process">
+      <div class="sec-head">
+        <span class="sec-num">06</span>
+        <h3 class="sec-title">How it works — numbered process</h3>
+        <span class="sec-note">3–4 steps, left→right</span>
+      </div>
+      <p class="sec-meta">Horizontal numbered steps with a connecting line. Reduces "how do you actually do this?" anxiety for outsourced lead-gen. <span class="ref">Callbox · MarketJoy</span></p>
+      <div class="wf">
+        <div class="grid4">
+          <div class="box"><div class="num-step">01</div><div class="stack" style="margin-top:8px;"><div class="bar w70"></div><div class="bar s w90"></div></div></div>
+          <div class="box"><div class="num-step">02</div><div class="stack" style="margin-top:8px;"><div class="bar w70"></div><div class="bar s w90"></div></div></div>
+          <div class="box"><div class="num-step">03</div><div class="stack" style="margin-top:8px;"><div class="bar w70"></div><div class="bar s w90"></div></div></div>
+          <div class="box"><div class="num-step">04</div><div class="stack" style="margin-top:8px;"><div class="bar w70"></div><div class="bar s w90"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 WHY US -->
+    <section class="sec" id="whyus">
+      <div class="sec-head">
+        <span class="sec-num">07</span>
+        <h3 class="sec-title">Why us — split differentiators</h3>
+        <span class="sec-note">text left · proof visual right</span>
+      </div>
+      <p class="sec-meta">Heading + 3–4 checklisted differentiators on the left, a product/dashboard or photo panel on the right. Alternates the rhythm after the bento. <span class="ref">Apollo · EasyLeadz · Projectify ("Why Partner With Us")</span></p>
+      <div class="wf">
+        <div class="grid2" style="align-items:stretch;">
+          <div class="stack" style="gap:14px;justify-content:center;">
+            <div class="head-bar" style="width:70%;"></div>
+            <div class="stack" style="gap:12px;">
+              <div class="row center"><div class="ic accent" style="width:22px;height:22px;border-radius:6px;"></div><div class="bar w80"></div></div>
+              <div class="row center"><div class="ic accent" style="width:22px;height:22px;border-radius:6px;"></div><div class="bar w70"></div></div>
+              <div class="row center"><div class="ic accent" style="width:22px;height:22px;border-radius:6px;"></div><div class="bar w80"></div></div>
+              <div class="row center"><div class="ic accent" style="width:22px;height:22px;border-radius:6px;"></div><div class="bar w60"></div></div>
+            </div>
+            <div class="pill solid" style="width:fit-content;">See case studies</div>
+          </div>
+          <div class="imgph" style="min-height:200px;">product / dashboard screenshot</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 CASE STUDIES -->
+    <section class="sec" id="cases">
+      <div class="sec-head">
+        <span class="sec-num">08</span>
+        <h3 class="sec-title">Case studies — metric cards</h3>
+        <span class="sec-note">"+312% pipeline" hooks</span>
+      </div>
+      <p class="sec-meta">3 cards: client logo + one giant result metric + one-line context + link. The credibility engine of every ref on your list. <span class="ref">Belkins · CIENCE · Callbox</span></p>
+      <div class="wf">
+        <div class="grid3">
+          <div class="box"><div class="imgph" style="height:32px;width:80px;margin-bottom:12px;">logo</div><div class="head-bar big" style="width:60%;margin-bottom:10px;"></div><div class="stack"><div class="bar s w90"></div><div class="bar s w70"></div></div></div>
+          <div class="box"><div class="imgph" style="height:32px;width:80px;margin-bottom:12px;">logo</div><div class="head-bar big" style="width:60%;margin-bottom:10px;"></div><div class="stack"><div class="bar s w90"></div><div class="bar s w70"></div></div></div>
+          <div class="box"><div class="imgph" style="height:32px;width:80px;margin-bottom:12px;">logo</div><div class="head-bar big" style="width:60%;margin-bottom:10px;"></div><div class="stack"><div class="bar s w90"></div><div class="bar s w70"></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 TESTIMONIALS -->
+    <section class="sec" id="testimonials">
+      <div class="sec-head">
+        <span class="sec-num">09</span>
+        <h3 class="sec-title">Testimonials</h3>
+        <span class="sec-note">quote + face + logo</span>
+      </div>
+      <p class="sec-meta">Either one large featured quote, or a 2–3 card row. Always show a real face + name + title + company logo. <span class="ref">Lusha · MarketJoy</span></p>
+      <div class="wf">
+        <div class="grid3">
+          <div class="box"><div class="stack" style="gap:8px;"><div class="bar s w90"></div><div class="bar s w90"></div><div class="bar s w70"></div></div><div class="row center" style="margin-top:14px;"><div class="ic" style="border-radius:50%;"></div><div class="stack" style="flex:1"><div class="bar s w60"></div><div class="bar s w40"></div></div></div></div>
+          <div class="box"><div class="stack" style="gap:8px;"><div class="bar s w90"></div><div class="bar s w80"></div><div class="bar s w90"></div></div><div class="row center" style="margin-top:14px;"><div class="ic" style="border-radius:50%;"></div><div class="stack" style="flex:1"><div class="bar s w60"></div><div class="bar s w40"></div></div></div></div>
+          <div class="box"><div class="stack" style="gap:8px;"><div class="bar s w80"></div><div class="bar s w90"></div><div class="bar s w60"></div></div><div class="row center" style="margin-top:14px;"><div class="ic" style="border-radius:50%;"></div><div class="stack" style="flex:1"><div class="bar s w60"></div><div class="bar s w40"></div></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 INDUSTRIES -->
+    <section class="sec" id="industries">
+      <div class="sec-head">
+        <span class="sec-num">10</span>
+        <h3 class="sec-title">Industries / use-cases</h3>
+        <span class="sec-note">tabs or chip grid</span>
+      </div>
+      <p class="sec-meta">Lets a visitor self-select ("I'm in SaaS / Healthcare / Fintech…"). Tabbed panel or a simple chip grid linking to tailored sub-pages. <span class="ref">CIENCE · Apollo</span></p>
+      <div class="wf">
+        <div class="row wrap" style="gap:10px;justify-content:center;">
+          <div class="chip">Industry</div><div class="chip">Industry</div><div class="chip">Industry</div>
+          <div class="chip">Industry</div><div class="chip">Industry</div><div class="chip">Industry</div>
+          <div class="chip">Industry</div><div class="chip">Industry</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 INTEGRATIONS -->
+    <section class="sec" id="integrations">
+      <div class="sec-head">
+        <span class="sec-num">11</span>
+        <h3 class="sec-title">Integrations</h3>
+        <span class="sec-note">"plugs into your stack"</span>
+      </div>
+      <p class="sec-meta">Logo grid of CRMs / tools (Salesforce, HubSpot, Slack…). Signals it fits an existing workflow — important for the Lusha/Apollo style. <span class="ref">Lusha · Apollo · EasyLeadz</span></p>
+      <div class="wf">
+        <div class="grid4">
+          <div class="imgph" style="height:48px;">logo</div><div class="imgph" style="height:48px;">logo</div>
+          <div class="imgph" style="height:48px;">logo</div><div class="imgph" style="height:48px;">logo</div>
+          <div class="imgph" style="height:48px;">logo</div><div class="imgph" style="height:48px;">logo</div>
+          <div class="imgph" style="height:48px;">logo</div><div class="imgph" style="height:48px;">logo</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 PRICING -->
+    <section class="sec" id="pricing">
+      <div class="sec-head">
+        <span class="sec-num">12</span>
+        <h3 class="sec-title">Pricing — toggle + tiers</h3>
+        <span class="sec-note">highlight "most popular"</span>
+      </div>
+      <p class="sec-meta">Monthly/Annual toggle + 2–3 tier cards, the recommended one lifted and color-blocked. (If it's a service, swap to "Get a custom quote".) <span class="ref">Projectify · Apollo · Lusha</span></p>
+      <div class="wf">
+        <div class="stack" style="align-items:center;margin-bottom:18px;gap:10px;">
+          <div class="head-bar" style="width:36%;"></div>
+          <div class="row" style="gap:0;border:1.5px solid var(--line-strong);border-radius:999px;padding:3px;background:#fff;">
+            <div class="pill solid" style="height:28px;">Monthly</div>
+            <div class="pill" style="height:28px;border:none;background:transparent;">Annual</div>
+          </div>
+        </div>
+        <div class="grid3" style="align-items:start;">
+          <div class="box"><div class="bar w40" style="margin-bottom:10px;"></div><div class="head-bar big" style="width:55%;margin-bottom:12px;"></div><div class="stack" style="gap:9px;"><div class="bar s w90"></div><div class="bar s w80"></div><div class="bar s w90"></div><div class="bar s w70"></div></div><div class="pill" style="margin-top:14px;width:100%;">Choose</div></div>
+          <div class="box dark" style="transform:translateY(-12px);"><div class="row between"><div class="bar dark w40"></div><div class="chip" style="background:var(--amber);border:none;color:#2b2a27;">Popular</div></div><div class="head-bar big" style="background:var(--amber);width:55%;margin:12px 0;"></div><div class="stack" style="gap:9px;"><div class="bar s dark w90"></div><div class="bar s dark w80"></div><div class="bar s dark w90"></div><div class="bar s dark w70"></div></div><div class="pill accent" style="margin-top:14px;width:100%;">Get started</div></div>
+          <div class="box"><div class="bar w40" style="margin-bottom:10px;"></div><div class="head-bar big" style="width:55%;margin-bottom:12px;"></div><div class="stack" style="gap:9px;"><div class="bar s w90"></div><div class="bar s w80"></div><div class="bar s w90"></div><div class="bar s w70"></div></div><div class="pill" style="margin-top:14px;width:100%;">Contact sales</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 FAQ -->
+    <section class="sec" id="faq">
+      <div class="sec-head">
+        <span class="sec-num">13</span>
+        <h3 class="sec-title">FAQ — accordion</h3>
+        <span class="sec-note">handles objections</span>
+      </div>
+      <p class="sec-meta">5–7 expandable rows. Two-column: short heading left, accordion right (or single centered column). <span class="ref">Callbox · EasyLeadz</span></p>
+      <div class="wf">
+        <div class="grid2" style="grid-template-columns:0.6fr 1.4fr;gap:30px;">
+          <div class="stack" style="gap:10px;"><div class="head-bar" style="width:80%;"></div><div class="bar s w90"></div><div class="bar s w60"></div></div>
+          <div class="stack" style="gap:10px;">
+            <div class="box row between center"><div class="bar w60"></div><div class="bar s w20" style="max-width:14px;"></div></div>
+            <div class="box row between center"><div class="bar w50"></div><div class="bar s w20" style="max-width:14px;"></div></div>
+            <div class="box row between center"><div class="bar w70"></div><div class="bar s w20" style="max-width:14px;"></div></div>
+            <div class="box row between center"><div class="bar w50"></div><div class="bar s w20" style="max-width:14px;"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 CTA BAND -->
+    <section class="sec" id="cta">
+      <div class="sec-head">
+        <span class="sec-num">14</span>
+        <h3 class="sec-title">Closing CTA band</h3>
+        <span class="sec-note">one job: book the call</span>
+      </div>
+      <p class="sec-meta">Full-bleed accent or dark band, big headline + single primary action (calendar embed or form). <span class="ref">Belkins · CIENCE · MarketJoy</span></p>
+      <div class="wf dark">
+        <div class="stack" style="align-items:center;gap:14px;padding:14px 0;">
+          <div class="head-bar big" style="background:#4a4843;width:50%;"></div>
+          <div class="bar s dark w30"></div>
+          <div class="pill accent" style="height:40px;padding:0 26px;">Book your free strategy call</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 FOOTER -->
+    <section class="sec" id="footer">
+      <div class="sec-head">
+        <span class="sec-num">15</span>
+        <h3 class="sec-title">Footer</h3>
+        <span class="sec-note">sitemap + trust badges</span>
+      </div>
+      <p class="sec-meta">Logo + short blurb + newsletter, then 3–4 link columns, legal row and trust/security badges. <span class="ref">all refs</span></p>
+      <div class="wf">
+        <div class="grid4" style="grid-template-columns:1.6fr 1fr 1fr 1fr;">
+          <div class="stack" style="gap:10px;"><div class="nav-logo"></div><div class="bar s w90"></div><div class="bar s w70"></div><div class="row" style="margin-top:6px;gap:8px;"><div class="ic" style="width:22px;height:22px;"></div><div class="ic" style="width:22px;height:22px;"></div><div class="ic" style="width:22px;height:22px;"></div></div></div>
+          <div class="stack" style="gap:9px;"><div class="bar s w50"></div><div class="bar s w70"></div><div class="bar s w60"></div><div class="bar s w70"></div></div>
+          <div class="stack" style="gap:9px;"><div class="bar s w50"></div><div class="bar s w70"></div><div class="bar s w60"></div><div class="bar s w70"></div></div>
+          <div class="stack" style="gap:9px;"><div class="bar s w50"></div><div class="bar s w70"></div><div class="bar s w60"></div><div class="bar s w70"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PART 2 — VARIANTS ===================== -->
+    <div class="divider">alternate framings — pick per section</div>
+
+    <h2 id="hero-opts" style="font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 4px;">Part 2 — Hero options</h2>
+    <p style="margin:0 0 26px;font-size:13.5px;color:var(--ink-soft);max-width:70ch;">The hero sets the whole tone. Three distinct framings — tell me which direction and I'll develop it.</p>
+
+    <div class="variant-grid cols">
+      <div class="variant">
+        <div class="variant-tag"><span class="v">A</span><span class="t">Floating proof</span><span class="d">Projectify</span></div>
+        <div class="variant-body">
+          <div class="stack" style="align-items:center;gap:10px;">
+            <div class="head-bar" style="width:80%;"></div>
+            <div class="head-bar" style="width:60%;"></div>
+            <div class="bar s w60"></div>
+            <div class="row" style="gap:8px;margin:4px 0;"><div class="pill accent" style="height:28px;">CTA</div><div class="pill" style="height:28px;">CTA</div></div>
+            <div class="row" style="gap:8px;width:100%;margin-top:6px;"><div class="imgph" style="flex:1;height:54px;">card</div><div class="imgph" style="flex:1;height:54px;">photo</div><div class="imgph" style="flex:1;height:54px;">card</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="variant">
+        <div class="variant-tag"><span class="v">B</span><span class="t">Split + visual</span><span class="d">Lusha / Apollo</span></div>
+        <div class="variant-body">
+          <div class="row" style="gap:14px;">
+            <div class="stack" style="flex:1;gap:9px;justify-content:center;">
+              <div class="head-bar" style="width:90%;"></div>
+              <div class="head-bar" style="width:70%;"></div>
+              <div class="bar s w90"></div>
+              <div class="row" style="gap:8px;margin-top:4px;"><div class="pill accent" style="height:28px;">CTA</div><div class="pill" style="height:28px;">CTA</div></div>
+            </div>
+            <div class="imgph" style="flex:1;min-height:150px;">product UI</div>
+          </div>
+        </div>
+      </div>
+      <div class="variant">
+        <div class="variant-tag"><span class="v">C</span><span class="t">Lead-capture</span><span class="d">Belkins / Callbox</span></div>
+        <div class="variant-body">
+          <div class="row" style="gap:14px;">
+            <div class="stack" style="flex:1;gap:9px;justify-content:center;">
+              <div class="head-bar" style="width:90%;"></div>
+              <div class="head-bar" style="width:65%;"></div>
+              <div class="bar s w80"></div>
+              <div class="row center" style="gap:8px;margin-top:4px;"><div class="ic" style="width:20px;height:20px;border-radius:50%;"></div><div class="bar s w50"></div></div>
+            </div>
+            <div class="box" style="flex:1;background:var(--blue-soft);border-color:var(--blue);">
+              <div class="bar w70" style="margin-bottom:10px;"></div>
+              <div class="stack" style="gap:8px;"><div class="box" style="height:30px;padding:0;"></div><div class="box" style="height:30px;padding:0;"></div><div class="pill accent" style="width:100%;height:32px;">Get my free quote</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="svc-opts" style="font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin:46px 0 4px;">Part 2 — Services / features options</h2>
+    <p style="margin:0 0 26px;font-size:13.5px;color:var(--ink-soft);max-width:70ch;">How to present what you do. Same content, three different rhythms.</p>
+
+    <div class="variant-grid cols">
+      <div class="variant">
+        <div class="variant-tag"><span class="v">A</span><span class="t">Bento grid</span><span class="d">Projectify</span></div>
+        <div class="variant-body">
+          <div class="bento" style="grid-auto-rows:54px;gap:8px;">
+            <div class="cell row2 accent"></div>
+            <div class="cell span2"></div>
+            <div class="cell"></div>
+            <div class="cell dark"></div>
+            <div class="cell span2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="variant">
+        <div class="variant-tag"><span class="v">B</span><span class="t">Uniform 3-col</span><span class="d">CIENCE / MarketJoy</span></div>
+        <div class="variant-body">
+          <div class="grid3" style="gap:8px;">
+            <div class="box" style="height:74px;"><div class="ic" style="width:20px;height:20px;margin-bottom:8px;"></div><div class="bar s w80"></div></div>
+            <div class="box" style="height:74px;"><div class="ic" style="width:20px;height:20px;margin-bottom:8px;"></div><div class="bar s w80"></div></div>
+            <div class="box" style="height:74px;"><div class="ic" style="width:20px;height:20px;margin-bottom:8px;"></div><div class="bar s w80"></div></div>
+            <div class="box" style="height:74px;"><div class="ic" style="width:20px;height:20px;margin-bottom:8px;"></div><div class="bar s w80"></div></div>
+            <div class="box" style="height:74px;"><div class="ic" style="width:20px;height:20px;margin-bottom:8px;"></div><div class="bar s w80"></div></div>
+            <div class="box" style="height:74px;"><div class="ic" style="width:20px;height:20px;margin-bottom:8px;"></div><div class="bar s w80"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="variant">
+        <div class="variant-tag"><span class="v">C</span><span class="t">Alternating rows</span><span class="d">Apollo / EasyLeadz</span></div>
+        <div class="variant-body">
+          <div class="stack" style="gap:10px;">
+            <div class="row" style="gap:10px;"><div class="imgph" style="flex:1;height:56px;">visual</div><div class="stack" style="flex:1;gap:7px;justify-content:center;"><div class="bar w70"></div><div class="bar s w90"></div><div class="bar s w60"></div></div></div>
+            <div class="row" style="gap:10px;"><div class="stack" style="flex:1;gap:7px;justify-content:center;"><div class="bar w70"></div><div class="bar s w90"></div><div class="bar s w60"></div></div><div class="imgph" style="flex:1;height:56px;">visual</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div class="end-note" id="next">
+      <h3>How I'd like to proceed</h3>
+      <p>This is a structural map, not the final look. Once you react to it, we go section-by-section — you give me the niche + copy for a section, I render it in high fidelity with real brand color, type and imagery.</p>
+      <ol>
+        <li><b>Cut / add / reorder</b> any of the 15 sections above.</li>
+        <li><b>Pick a hero</b> (A / B / C) and a <b>services layout</b> (A / B / C).</li>
+        <li>Tell me the <b>niche + the first section's copy</b> — likely the hero — and I'll build it for real.</li>
+        <li>Later: lock the <b>accent color + type</b> (amber is just a placeholder here).</li>
+      </ol>
+    </div>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+  body{margin:0;background:#333;display:flex;flex-wrap:wrap;gap:8px;padding:8px;font-family:monospace;color:#fff}
+  figure{margin:0}
+  canvas{width:420px;height:auto;display:block;background:#fff}
+  figcaption{font-size:12px;padding:2px}
+</style></head>
+<body>
+<div id="status">loading…</div>
+<script type="module">
+import * as pdfjs from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.min.mjs';
+pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.7.76/build/pdf.worker.min.mjs';
+const pages = window.__PAGES__ || [1,2,3,15,16,17,19,32,75,82,83,88];
+const status = document.getElementById('status');
+try{
+  const url = '../uploads/Ministry of Tribal Affairs_compressed.pdf';
+  const pdf = await pdfjs.getDocument(url).promise;
+  status.textContent = 'doc loaded, pages='+pdf.numPages;
+  for(const p of pages){
+    const page = await pdf.getPage(p);
+    const v = page.getViewport({scale:1.1});
+    const c = document.createElement('canvas');
+    c.width=v.width; c.height=v.height;
+    await page.render({canvasContext:c.getContext('2d'),viewport:v}).promise;
+    const fig=document.createElement('figure');
+    const cap=document.createElement('figcaption'); cap.textContent='p'+p;
+    fig.appendChild(cap); fig.appendChild(c); document.body.appendChild(fig);
+    status.textContent='rendered up to p'+p;
+  }
+  status.textContent='DONE';
+}catch(e){ status.textContent='ERR '+e.message; }
+</script>
+</body></html>

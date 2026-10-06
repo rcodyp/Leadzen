@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Leadzen.ai — Complete Homepage Design Prompt</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --void:     #0A0812;
+  --deep:     #0F0B1E;
+  --surface:  #1C1535;
+  --elevated: #231A40;
+  --purple:   #6B3FA0;
+  --violet:   #8B5CF6;
+  --lavender: #A78BFA;
+  --teal:     #22D3EE;
+  --mint:     #6EE7B7;
+  --coral:    #F87171;
+  --amber:    #FCD34D;
+  --gold:     #F59E0B;
+  --white:    #FAFAF9;
+  --gray2:    #E5E7EB;
+  --gray4:    #9CA3AF;
+  --gray6:    #6B7280;
+  --font-b:   'Space Grotesk', sans-serif;
+  --font-body:'Inter', sans-serif;
+  --font-m:   'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--void);
+  color:var(--white);
+  line-height:1.7;
+}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--void)}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px}
+
+/* ── NAV ── */
+.top-nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(10,8,18,0.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(139,92,246,0.2);
+  padding:0 48px;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:var(--font-b);font-size:15px;font-weight:700;
+  letter-spacing:-0.02em;color:var(--white);text-decoration:none;
+}
+.logo span{color:var(--violet)}
+.nav-badge{
+  font-family:var(--font-m);font-size:9px;font-weight:600;
+  letter-spacing:0.15em;text-transform:uppercase;
+  background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);
+  color:var(--lavender);padding:3px 10px;border-radius:20px;margin-left:12px;
+}
+.nav-section-tag{
+  font-family:var(--font-m);font-size:9px;color:var(--violet);
+  letter-spacing:0.15em;text-transform:uppercase;
+  background:rgba(139,92,246,0.1);padding:2px 8px;border-radius:4px;
+  margin-right:8px;
+}
+
+/* ── MAIN CONTENT ── */
+.page-wrap{max-width:960px;margin:0 auto;padding:60px 40px 120px}
+
+/* ── SECTION TITLE ── */
+.section-block{margin-bottom:60px}
+.eyebrow{
+  font-family:var(--font-m);font-size:10px;font-weight:700;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--violet);margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{
+  content:'';display:block;width:28px;height:2px;
+  background:var(--violet);
+}
+.section-title{
+  font-family:var(--font-b);
+  font-size:clamp(24px,3vw,36px);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-0.025em;margin-bottom:12px;
+}
+.section-sub{
+  font-size:16px;color:var(--gray4);
+  max-width:640px;line-height:1.75;margin-bottom:32px;
+}
+
+/* ── DIVIDER ── */
+.rule{
+  height:1px;
+  background:linear-gradient(90deg,rgba(139,92,246,0.5),rgba(34,211,238,0.2),transparent);
+  margin:48px 0;
+}
+
+/* ── PROMPT BLOCK ── */
+.prompt-container{
+  background:var(--surface);
+  border:1px solid rgba(139,92,246,0.25);
+  border-radius:16px;
+  overflow:hidden;
+}
+.prompt-header{
+  background:rgba(107,63,160,0.2);
+  border-bottom:1px solid rgba(139,92,246,0.2);
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.prompt-header-left{
+  display:flex;align-items:center;gap:10px;
+}
+.prompt-dots{display:flex;gap:5px}
+.dot{width:10px;height:10px;border-radius:50%}
+.dot-r{background:#F87171}.dot-y{background:#FCD34D}.dot-g{background:#6EE7B7}
+.prompt-label{
+  font-family:var(--font-m);font-size:10px;font-weight:600;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--lavender);
+}
+.copy-btn{
+  font-family:var(--font-m);font-size:10px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);
+  color:var(--lavender);padding:5px 14px;border-radius:20px;
+  cursor:pointer;transition:all 0.2s;
+}
+.copy-btn:hover{background:rgba(139,92,246,0.3);color:var(--white)}
+.prompt-body{
+  padding:28px 32px;
+  font-family:var(--font-m);font-size:13px;
+  color:var(--gray2);line-height:1.85;
+  white-space:pre-wrap;
+  max-height:none;
+  overflow:visible;
+}
+.prompt-body .comment{color:var(--gray6)}
+.prompt-body .section-head{
+  color:var(--mint);font-weight:700;
+  font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+}
+.prompt-body .highlight{color:var(--lavender)}
+.prompt-body .value{color:var(--teal)}
+.prompt-body .copy-text{color:var(--amber)}
+.prompt-body .important{color:var(--coral)}
+
+/* ── COPY SECTIONS ── */
+.copy-section{margin-bottom:40px}
+.copy-block{
+  background:var(--elevated);
+  border:1px solid rgba(139,92,246,0.2);
+  border-radius:12px;padding:24px;
+  margin-bottom:16px;
+}
+.copy-block-label{
+  font-family:var(--font-m);font-size:9px;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--violet);margin-bottom:12px;
+  padding-bottom:10px;border-bottom:1px solid rgba(139,92,246,0.15);
+}
+.headline-display{
+  font-family:var(--font-b);
+  font-size:clamp(22px,3vw,32px);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-0.025em;color:var(--white);
+  margin-bottom:8px;
+}
+.subline{font-size:15px;color:var(--gray4);line-height:1.7;margin-bottom:12px}
+.cta-display{
+  display:inline-flex;gap:12px;flex-wrap:wrap;margin-top:8px;
+}
+.cta-primary{
+  background:linear-gradient(135deg,var(--purple),var(--violet));
+  color:var(--white);font-family:var(--font-b);font-size:13px;font-weight:700;
+  padding:10px 24px;border-radius:24px;text-decoration:none;
+  letter-spacing:0.04em;display:inline-block;
+}
+.cta-secondary{
+  background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);
+  color:var(--lavender);font-family:var(--font-b);font-size:13px;font-weight:600;
+  padding:10px 24px;border-radius:24px;text-decoration:none;
+  display:inline-block;
+}
+.badge-display{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.25);
+  color:var(--mint);font-family:var(--font-m);font-size:10px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:5px 14px;border-radius:20px;margin-bottom:16px;
+}
+.section-copy-title{
+  font-family:var(--font-b);font-size:22px;font-weight:700;
+  letter-spacing:-0.015em;color:var(--white);margin-bottom:6px;
+}
+.section-copy-sub{font-size:14px;color:var(--gray4);line-height:1.7}
+.feature-title{font-family:var(--font-b);font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.feature-body{font-size:13px;color:var(--gray4);line-height:1.65}
+.stat-big{
+  font-family:var(--font-b);font-size:32px;font-weight:700;
+  letter-spacing:-0.03em;color:var(--mint);
+}
+.testimonial-text{
+  font-size:14px;color:var(--white);line-height:1.75;
+  font-style:italic;margin-bottom:8px;
+}
+.testimonial-attr{font-family:var(--font-m);font-size:10px;color:var(--gray6);letter-spacing:0.1em}
+
+/* ── SPEC CARDS ── */
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.spec-card{
+  background:rgba(107,63,160,0.08);
+  border:1px solid rgba(139,92,246,0.2);
+  border-radius:10px;padding:16px 20px;
+}
+.spec-label{
+  font-family:var(--font-m);font-size:9px;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--violet);margin-bottom:8px;
+}
+.spec-value{font-size:13px;color:var(--gray2);line-height:1.6}
+
+/* ── CALLOUT BOX ── */
+.callout{
+  background:rgba(34,211,238,0.06);
+  border:1px solid rgba(34,211,238,0.2);
+  border-left:3px solid var(--teal);
+  border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;
+}
+.callout p{font-size:13px;color:var(--gray2);line-height:1.65}
+.callout strong{color:var(--teal)}
+
+.warn-callout{
+  background:rgba(248,113,113,0.06);
+  border:1px solid rgba(248,113,113,0.2);
+  border-left:3px solid var(--coral);
+  border-radius:0 10px 10px 0;
+  padding:16px 20px;margin:20px 0;
+}
+.warn-callout p{font-size:13px;color:var(--gray2);line-height:1.65}
+.warn-callout strong{color:var(--coral)}
+
+/* ── SECTION DIVIDERS ── */
+.section-label{
+  display:flex;align-items:center;gap:12px;
+  margin:52px 0 28px;
+}
+.section-num{
+  font-family:var(--font-m);font-size:11px;font-weight:700;
+  color:var(--violet);background:rgba(139,92,246,0.12);
+  border:1px solid rgba(139,92,246,0.3);
+  padding:4px 12px;border-radius:6px;
+  letter-spacing:0.1em;
+}
+.section-name{
+  font-family:var(--font-b);font-size:20px;font-weight:700;
+  letter-spacing:-0.01em;color:var(--white);
+}
+.section-line{flex:1;height:1px;background:rgba(139,92,246,0.2)}
+
+/* ── INLINE KW ── */
+.kw{
+  font-family:var(--font-m);font-size:11px;
+  background:rgba(139,92,246,0.12);color:var(--lavender);
+  border:1px solid rgba(139,92,246,0.25);
+  padding:2px 8px;border-radius:4px;
+}
+
+/* responsive */
+@media(max-width:700px){
+  .page-wrap{padding:40px 20px 80px}
+  .top-nav{padding:0 20px}
+  .spec-grid{grid-template-columns:1fr}
+  .prompt-body{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <div style="display:flex;align-items:center">
+    <a href="#" class="logo">leadzen<span>.ai</span></a>
+    <span class="nav-badge">Design Brief</span>
+  </div>
+  <div style="font-family:var(--font-m);font-size:10px;color:var(--gray6);letter-spacing:0.1em">
+    Homepage Design Prompt v1.0 · June 2025
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="section-block">
+    <div class="eyebrow">Leadzen.ai · Design System</div>
+    <h1 class="section-title">
+      Complete Homepage Design Prompt<br/>
+      <span style="background:linear-gradient(135deg,var(--white),var(--lavender) 50%,var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+        for Claude / AI Design Tools
+      </span>
+    </h1>
+    <p class="section-sub">
+      A complete, paste-ready design brief with exact color tokens, typography specs, component layout instructions, and production-ready homepage copy — written to produce a pixel-perfect, conversion-optimised homepage for Leadzen.ai in the Galaxy palette.
+    </p>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 1: THE MASTER PROMPT
+  ════════════════════════════════════════════════════ -->
+  <div class="section-label">
+    <span class="section-num">01</span>
+    <span class="section-name">The Master Prompt — Paste This Into Claude</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="callout">
+    <p><strong>How to use:</strong> Copy the entire prompt block below and paste it directly into Claude (claude.ai) or any AI design tool. The prompt is self-contained — it includes the design system, all copy, component specs, and behavioral requirements. No additional context needed.</p>
+  </div>
+
+  <div class="prompt-container">
+    <div class="prompt-header">
+      <div class="prompt-header-left">
+        <div class="prompt-dots">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+        </div>
+        <span class="prompt-label">Master Design Prompt · Leadzen.ai Homepage</span>
+      </div>
+      <button class="copy-btn" onclick="copyPrompt()">Copy Prompt</button>
+    </div>
+    <div class="prompt-body" id="master-prompt">
+<span class="comment">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LEADZEN.AI — HOMEPAGE DESIGN BRIEF
+Build a complete, pixel-perfect homepage as a single HTML file
+with embedded CSS and JavaScript. No external libraries except
+Google Fonts. Production-ready, responsive, fully interactive.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="section-head">═══ 01. PRODUCT CONTEXT ═══</span>
+
+Leadzen.ai is an AI-powered B2B lead generation and sales intelligence
+platform for Indian and global sales teams. It helps SDRs, founders,
+and sales leaders find verified B2B contacts, enrich them with
+firmographic data, detect buyer intent signals, and run AI-personalized
+outreach — all in one platform.
+
+Target audience: SDRs, BDR managers, VP Sales, growth founders,
+marketing teams at B2B SaaS companies (primarily India-first, expanding
+to Singapore, UAE, US). Companies of 10–500 employees.
+
+Primary CTA goal: Free trial signup (50 free credits, no card required).
+Secondary CTA: Book a demo.
+
+<span class="section-head">═══ 02. DESIGN SYSTEM — GALAXY PALETTE ═══</span>
+
+<span class="highlight">BACKGROUND COLORS (dark-first design):</span>
+  --void:     #0A0812   ← Primary page background (deepest dark)
+  --deep:     #0F0B1E   ← Section background alternates
+  --surface:  #1C1535   ← Cards, modals, input backgrounds
+  --elevated: #231A40   ← Hover states, active cards, dropdowns
+
+<span class="highlight">BRAND COLORS (primary identity):</span>
+  --purple:   #6B3FA0   ← Brand core, CTA buttons, primary fills
+  --violet:   #8B5CF6   ← Highlights, active states, borders, eyebrows
+  --lavender: #A78BFA   ← Secondary text, sub-labels, nav items
+  --nebula:   #C4B5FD   ← On-dark body text, captions, metadata
+
+<span class="highlight">ACCENT COLORS (semantic/functional):</span>
+  --teal:     #22D3EE   ← AI features, data highlights, tech callouts
+  --teal-dim: #0E7490   ← Teal backgrounds, hover states
+  --mint:     #6EE7B7   ← Verified data, success states, checkmarks
+  --coral:    #F87171   ← Alerts, urgency, warnings
+  --amber:    #FCD34D   ← Secondary accent, premium indicators
+  --gold:     #F59E0B   ← Enterprise tier, star ratings, premium
+
+<span class="highlight">TEXT / NEUTRAL:</span>
+  --white:    #FAFAF9   ← Primary text on dark backgrounds
+  --gray-100: #E5E7EB   ← Body text (slightly muted)
+  --gray-400: #9CA3AF   ← Secondary text, descriptions
+  --gray-600: #6B7280   ← Muted text, meta, captions
+
+<span class="highlight">GRADIENTS (use exactly as defined):</span>
+  Galaxy Core:   linear-gradient(135deg, #6B3FA0, #8B5CF6)
+  Nebula Stream: linear-gradient(135deg, #8B5CF6, #22D3EE)
+  Deep Space:    linear-gradient(135deg, #6B3FA0, #8B5CF6, #22D3EE)
+  Text Gradient: linear-gradient(135deg, #FAFAF9 0%, #A78BFA 55%, #22D3EE 100%)
+
+<span class="section-head">═══ 03. TYPOGRAPHY ═══</span>
+
+Import from Google Fonts:
+  Space Grotesk: weights 400, 500, 600, 700
+  Inter: weights 300, 400, 500, 600
+  JetBrains Mono: weights 400, 500
+
+<span class="highlight">USAGE RULES (strict — never break these):</span>
+  Space Grotesk → ALL headlines, H1–H4, CTAs, nav, labels, eyebrows
+  Inter         → ALL body copy, descriptions, paragraphs, captions
+  JetBrains Mono→ Code, hex values, metadata, badges, stats labels
+
+<span class="highlight">TYPE SCALE:</span>
+  Display H1:  Space Grotesk, 56–72px, weight 700, tracking -0.03em, lh 1.0
+  H2:          Space Grotesk, 36–44px, weight 700, tracking -0.025em, lh 1.1
+  H3:          Space Grotesk, 24–28px, weight 700, tracking -0.02em, lh 1.2
+  H4:          Space Grotesk, 18–20px, weight 600, tracking -0.01em, lh 1.3
+  Body Large:  Inter, 17–18px, weight 400, lh 1.75
+  Body:        Inter, 15–16px, weight 400, lh 1.7
+  Caption:     JetBrains Mono, 11–12px, weight 500, tracking 0.08em, uppercase
+  Eyebrow:     JetBrains Mono, 10–11px, weight 700, tracking 0.25em, uppercase
+
+<span class="section-head">═══ 04. VISUAL STYLE & ATMOSPHERE ═══</span>
+
+The aesthetic is: deep space observatory meets precision SaaS.
+Think: the visual intelligence of a satellite tracking display,
+translated into a sales tool interface.
+
+<span class="highlight">MUST INCLUDE:</span>
+  1. Dot grid background pattern on hero section (radial-gradient dots,
+     rgba(255,255,255,0.05), spacing 32–36px — creates the "night sky" effect)
+  2. Radial glow effects behind key UI elements using the brand purples/teals
+     (create depth without heavy gradients)
+  3. Glass-morphism style cards: background rgba(28,21,53,0.8),
+     backdrop-filter blur(16px), border rgba(139,92,246,0.2)
+  4. The Neural Constellation motif: three connected dots (triangle formation)
+     as a subtle decorative element in the hero — represents Data → AI → Pipeline
+  5. Animated pulse dot on "Live" badges (CSS animation, 2s ease-in-out)
+  6. Hover micro-interactions on all interactive elements (subtle glow,
+     border color shift, translateY(-2px))
+  7. Scroll-triggered fade-in animations for section content
+     (IntersectionObserver, opacity 0→1, translateY 24px→0, 0.6s ease)
+
+<span class="highlight">DO NOT:</span>
+  - Use white or light backgrounds anywhere
+  - Use generic blue (#3B82F6) — use violet (#8B5CF6) instead
+  - Use rounded corners above border-radius: 20px on cards
+  - Use stock illustration style graphics
+  - Add more than 2 font families (Space Grotesk + Inter + Mono only)
+  - Use any animation that is distracting or demo-heavy
+
+<span class="section-head">═══ 05. PAGE STRUCTURE — 10 SECTIONS ═══</span>
+
+Build in this exact order:
+
+  01 · NAV BAR           → Sticky, glassmorphism, logo + links + CTA
+  02 · HERO              → Full-width, dot grid, main headline + demo
+  03 · SOCIAL PROOF BAR  → Logos + trust stats strip
+  04 · PROBLEM           → Pain section (the "before" state)
+  05 · SOLUTION / HOW    → 5-step AI process visual
+  06 · FEATURES          → 6 feature cards (AI bot ecosystem)
+  07 · STATS / PROOF     → Data benchmarks and results
+  08 · TESTIMONIALS      → 3 customer quotes
+  09 · PRICING CTA       → Mid-page conversion block
+  10 · FOOTER            → Full footer with links
+
+Detailed specs for each section follow.
+
+<span class="section-head">═══ 06. SECTION-BY-SECTION SPECS ═══</span>
+
+<span class="highlight">── SECTION 01: NAV BAR ──</span>
+
+Height: 56px
+Background: rgba(10,8,18,0.95), backdrop-filter: blur(16px)
+Border-bottom: 1px solid rgba(139,92,246,0.2)
+Position: sticky, top:0, z-index:100
+
+LEFT: Logo "leadzen.ai" in Space Grotesk Bold 15px — "leadzen" in #FAFAF9,
+      ".ai" in #8B5CF6
+
+CENTER LINKS (Space Grotesk 13px, weight 500, color #9CA3AF, hover→#FAFAF9):
+  Product · Features · Pricing · Blog · Case Studies
+
+RIGHT:
+  - "Sign In" link (color: #A78BFA)
+  - "Start Free" button: Galaxy Core gradient, Space Grotesk Bold 13px,
+    padding 8px 20px, border-radius 24px
+
+Mobile: hamburger at 768px breakpoint, full-screen menu overlay
+
+<span class="highlight">── SECTION 02: HERO ──</span>
+
+Min-height: 100vh
+Background layers (stack in order):
+  radial-gradient(ellipse 80% 60% at 20% 50%, rgba(107,63,160,0.35) 0%, transparent 60%)
+  radial-gradient(ellipse 60% 60% at 80% 20%, rgba(34,211,238,0.12) 0%, transparent 55%)
+  radial-gradient(ellipse 70% 70% at 50% 90%, rgba(139,92,246,0.2) 0%, transparent 55%)
+  #0A0812
+Dot grid overlay: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)
+  background-size: 36px 36px
+
+LAYOUT: Two columns — content left (55%), visual right (45%)
+Max content width: 1200px, horizontally centered
+
+<span class="copy-text">LIVE BADGE (above headline):</span>
+  [● Live] AI-Powered B2B Prospecting · India's Deepest Database · GDPR Compliant
+  Style: inline-flex, gap 8px, rgba(107,63,160,0.15) bg, 1px solid rgba(139,92,246,0.35),
+  border-radius 40px, padding 8px 20px
+  The dot: 6px, background #6EE7B7, box-shadow 0 0 8px #6EE7B7, animation: pulse 2s infinite
+
+<span class="copy-text">MAIN HEADLINE (H1):</span>
+  Line 1: "Stop Hunting."  ← Apply Text Gradient (Deep Space)
+  Line 2: "Start Converting."  ← White #FAFAF9
+  Font: Space Grotesk, 64px desktop / 44px mobile, weight 700, tracking -0.03em, lh 1.0
+  Margin-bottom: 24px
+
+<span class="copy-text">SUB-HEADLINE:</span>
+  "Find, enrich, and engage your ideal B2B customers — with AI that
+  understands your ICP and data that's verified before it reaches you."
+  Font: Inter, 18px, color #E5E7EB, lh 1.75, max-width 520px
+  Margin-bottom: 36px
+
+<span class="copy-text">CTA ROW:</span>
+  Primary: "Get 50 Free Leads →"
+    Background: Galaxy Core gradient, padding 14px 32px, border-radius 30px,
+    Space Grotesk Bold 15px, letter-spacing 0.04em
+    Hover: brightness 1.1, box-shadow 0 8px 32px rgba(107,63,160,0.4), translateY(-2px)
+
+  Secondary: "See it in action ▶"
+    Background: rgba(139,92,246,0.1), border 1px solid rgba(139,92,246,0.3),
+    color #A78BFA, padding 14px 28px, border-radius 30px, Space Grotesk 15px
+    Hover: background rgba(139,92,246,0.2), color #FAFAF9
+
+<span class="copy-text">TRUST MICRO-COPY (below CTAs):</span>
+  "✓ No credit card required  ·  ✓ 50 free verified contacts  ·  ✓ GDPR compliant"
+  Font: JetBrains Mono, 11px, color #6B7280, letter-spacing 0.06em
+
+<span class="copy-text">RIGHT SIDE — DEMO VISUAL:</span>
+  Build a simulated AI search interface card:
+    Background: rgba(28,21,53,0.9), border: 1px solid rgba(139,92,246,0.3),
+    border-radius: 16px, padding: 24px, backdrop-filter: blur(16px)
+    Box-shadow: 0 24px 64px rgba(0,0,0,0.4), 0 0 0 1px rgba(139,92,246,0.1)
+
+  Inside the card:
+    1. Search bar mockup: "Series A FinTech founders in Mumbai..." with
+       a pulsing cursor and "AI Search" badge in teal
+    2. Results count: "1,284 verified contacts found · 0.8s"
+       in JetBrains Mono, color #6EE7B7
+    3. Three contact result rows (fictional names):
+       Each row: avatar circle (gradient), Name + Title + Company, green verified badge
+       Names: Arjun Sharma — VP Sales, NeoStack AI
+               Priya Mehta — Founder, SeriesUp Technologies
+               Rahul Bose — Head of Growth, FinCore India
+    4. A small "View All 1,284 →" button at bottom
+
+  The card should have a subtle floating animation:
+  @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+  animation: float 5s ease-in-out infinite
+
+<span class="highlight">── SECTION 03: SOCIAL PROOF BAR ──</span>
+
+Background: #0F0B1E (slightly lighter than void)
+Height: 80px
+Border-top and bottom: 1px solid rgba(139,92,246,0.12)
+
+Content (centered, flexbox, gap 48px):
+  LEFT: "Trusted by 2,000+ B2B teams across India"
+        JetBrains Mono, 11px, #6B7280, letter-spacing 0.1em, uppercase
+
+  CENTER: 4 company logo placeholders (use text names styled as logos)
+          StyleBox: opacity 0.45, filter grayscale(1), hover: opacity 1, filter none
+          Names: Razorpay  ·  Freshworks  ·  Zoho  ·  MoEngage
+
+  RIGHT: Three trust stats:
+         "3× more meetings" · "94% data accuracy" · "60% lower CPL"
+         Each: JetBrains Mono 11px, color #8B5CF6, letter-spacing 0.08em
+
+<span class="highlight">── SECTION 04: PROBLEM SECTION ──</span>
+
+Background: #0A0812 (void)
+Padding: 100px 0
+
+EYEBROW: "THE PROBLEM" in JetBrains Mono, uppercase, #8B5CF6
+
+HEADLINE: "Your team is spending 40% of their day
+           doing everything except selling."
+Font: Space Grotesk, 42px, weight 700, tracking -0.025em, max-width 640px
+
+BODY:
+  "Bad data kills quota. Manual list-building wastes hours. Outreach goes
+  to wrong people at wrong companies. Your SDRs are researchers, not sellers —
+  and it's destroying your pipeline."
+  Font: Inter, 17px, color #9CA3AF, lh 1.75
+
+PAIN POINT GRID (3 cards):
+  Card 1 — "7.5% bounce rate"
+    Icon: ⚠ (coral)
+    Title: "Bad Data Burns Your Sender Reputation"
+    Body: "The average B2B team sends to contacts that are 22.5% stale.
+           Every bounce tells Gmail you're spam. Your whole domain suffers."
+
+  Card 2 — "40% of the day"
+    Icon: ⏱ (amber)
+    Title: "Manual Research Isn't a Sales Strategy"
+    Body: "SDRs spend nearly half their working hours on list-building,
+           research, and data entry. That's not selling. That's administration."
+
+  Card 3 — "3.1% average reply rate"
+    Icon: 📉 (coral)
+    Title: "Spray-and-Pray Is Dead"
+    Body: "Generic outreach to unverified lists returns 3.1% reply rates.
+           Teams using verified, intent-filtered data hit 10–15% consistently."
+
+Card style: surface bg (#1C1535), 1px solid rgba(107,63,160,0.2),
+border-radius 16px, padding 28px, left border 3px solid accent color
+
+TRANSITION LINE (at bottom of section):
+  "There's a better way. One platform. Verified data. AI-powered outreach."
+  Font: Space Grotesk, 20px, color #A78BFA, italic, centered
+
+<span class="highlight">── SECTION 05: SOLUTION / HOW IT WORKS ──</span>
+
+Background: #0F0B1E
+Padding: 100px 0
+
+EYEBROW: "HOW IT WORKS"
+HEADLINE: "Five steps from ICP to confirmed meeting."
+SUB: "Leadzen.ai handles the entire prospecting workflow — so your team
+      shows up to conversations, not spreadsheets."
+
+PROCESS STEPS (horizontal flow on desktop, vertical on mobile):
+  Step 1: "Define Your ICP"
+    Color accent: #8B5CF6 (violet)
+    Body: "Describe your ideal customer in plain English. Our AI builds your
+           ICP from the description — no filter forms, no dropdowns."
+
+  Step 2: "Find Verified Contacts"
+    Color accent: #22D3EE (teal)
+    Body: "Search 200M+ verified B2B contacts. Every email and phone number
+           checked in real time before it reaches your list."
+
+  Step 3: "Enrich with Intelligence"
+    Color accent: #6EE7B7 (mint)
+    Body: "Firmographic data, funding history, tech stack, intent signals,
+           and hiring patterns — all attached automatically to every contact."
+
+  Step 4: "Detect Buying Intent"
+    Color accent: #FCD34D (amber)
+    Body: "SCOUT monitors funding events, hiring surges, and tech stack
+           changes across your target accounts — surfacing in-market companies."
+
+  Step 5: "Launch Personalised Outreach"
+    Color accent: #F87171 (coral)
+    Body: "OUTRIX writes personalised email, LinkedIn, and call scripts using
+           enrichment context — not templates. Sequences launch automatically."
+
+Between each step: a connecting arrow/line in the step's accent color
+Each step: numbered circle (gradient background), title, 2-line body
+
+<span class="highlight">── SECTION 06: FEATURES (AI BOT ECOSYSTEM) ──</span>
+
+Background: #0A0812
+Padding: 100px 0
+
+EYEBROW: "THE LEADZEN.AI PLATFORM"
+HEADLINE: "Six AI agents. One platform. Zero manual work."
+SUB: "Each agent has a specific role in your revenue workflow.
+      Together, they replace a stack of disconnected tools."
+
+FEATURE GRID: 3 columns × 2 rows (6 cards)
+
+  Card 1 — ZARA: Brand Ambassador
+    Accent: #8B5CF6
+    Icon: 🧬
+    Tier badge: FREE
+    Headline: "Your always-on demo rep"
+    Body: "Qualifies website visitors, answers product questions, and books
+           demo meetings 24/7 — so your team wakes up to booked calendars."
+
+  Card 2 — LENZ: Platform Support
+    Accent: #22D3EE
+    Icon: 🤖
+    Tier badge: FREE
+    Headline: "Zero wait time, every question answered"
+    Body: "In-app AI that knows every feature, every use case, and every
+           answer — keeping customers unblocked and support queues empty."
+
+  Card 3 — GUIDE: Onboarding Copilot
+    Accent: #FCD34D
+    Icon: 🧭
+    Tier badge: PRO
+    Headline: "From signup to first pipeline in one session"
+    Body: "Builds your ICP, runs your first search, and delivers a verified
+           prospect list before your onboarding session ends."
+
+  Card 4 — OUTRIX: Outreach Generator
+    Accent: #F87171
+    Icon: ⚡
+    Tier badge: PRO
+    Headline: "Personalised outreach at scale, automatically"
+    Body: "Writes cold email, LinkedIn messages, and call scripts using real
+           enrichment data — not templates. Your prospect can tell the difference."
+
+  Card 5 — SCOUT: Buyer Intelligence
+    Accent: #6EE7B7
+    Icon: 🔍
+    Tier badge: ENTERPRISE
+    Headline: "Know who's ready to buy before they raise their hand"
+    Body: "Tracks funding events, hiring signals, and intent data across your
+           target accounts — surfacing in-market companies at the right moment."
+
+  Card 6 — NEXUS: Revenue Analytics
+    Accent: #A78BFA
+    Icon: 📊
+    Tier badge: ENTERPRISE
+    Headline: "See exactly where your pipeline is leaking"
+    Body: "Tracks which outreach is generating ROI, which reps are booking
+           meetings, and what your credit usage is producing in confirmed pipeline."
+
+Card style:
+  Background: rgba(28,21,53,0.8), backdrop-filter blur(12px)
+  Border: 1px solid rgba(accent,0.3)
+  Border-left: 4px solid accent color
+  Border-radius: 16px, padding 28px
+  Bot name: Space Grotesk Bold 22px in accent color
+  Role: JetBrains Mono 10px uppercase, accent color, letter-spacing 0.15em
+  Tier badge: pill style, color-coded (FREE=mint, PRO=amber, ENTERPRISE=teal)
+  Hover: box-shadow 0 8px 40px rgba(accent,0.2), translateY(-4px)
+
+<span class="highlight">── SECTION 07: STATS / RESULTS ──</span>
+
+Background: radial glow section (#0F0B1E with purple radial center)
+Padding: 100px 0
+
+EYEBROW: "RESULTS THAT SPEAK"
+HEADLINE: "Numbers don't lie. Pipelines do."
+
+STAT GRID (4 stats in a row):
+
+  Stat 1: "3×" — More confirmed meetings vs manual prospecting
+  Stat 2: "94%" — Average data accuracy across all exports
+  Stat 3: "48min" — Average time from signup to first verified lead list
+  Stat 4: "2,000+" — B2B teams across India using Leadzen.ai
+
+Number style: Space Grotesk, 56px, weight 700, tracking -0.03em
+  Colours: mint / teal / violet / lavender (one per stat)
+Label: JetBrains Mono, 11px, #6B7280, uppercase, letter-spacing 0.1em
+
+BENEATH STATS: A comparison bar chart (CSS-only, animated on scroll):
+  "Reply rate: Industry average 3.1% vs Leadzen.ai users 11.2%"
+  Two horizontal bars — coral (industry) and mint (Leadzen) with labels
+
+<span class="highlight">── SECTION 08: TESTIMONIALS ──</span>
+
+Background: #0A0812
+Padding: 100px 0
+
+EYEBROW: "FROM THE TEAMS USING IT"
+HEADLINE: "What happens when your data actually works."
+
+THREE TESTIMONIAL CARDS in a row:
+
+  Card 1:
+    Quote: "We went from 80 cold calls a day with a 2% connect rate to
+    40 verified outreaches with a 14% reply rate. Leadzen.ai didn't just
+    save us time — it changed what 'pipeline' means for our team."
+    Name: Aditya Kulkarni
+    Role: VP Sales · FinTech SaaS, Mumbai
+    Visual: Avatar circle with gradient
+
+  Card 2:
+    Quote: "I used to spend Sunday nights building prospect lists for Monday.
+    Now I describe the company I want to find and have a verified list
+    in 30 seconds. My SDRs actually sell now."
+    Name: Sneha Raghavan
+    Role: Founder & CEO · B2B HR Tech, Bengaluru
+
+  Card 3:
+    Quote: "The intent signals are the real differentiator. SCOUT told me
+    which companies were actively researching our category. We reached out
+    before they even requested demos from competitors. Three of those
+    became our largest accounts this quarter."
+    Name: Vikram Nair
+    Role: Head of Growth · Series B SaaS, Chennai
+
+Card style: surface background, violet left border, padding 28px, border-radius 16px
+Quote: Inter, 14.5px, #E5E7EB, italic, lh 1.75
+Attribution: JetBrains Mono, 10px, #6B7280, uppercase, letter-spacing 0.1em
+
+<span class="highlight">── SECTION 09: PRICING CTA BLOCK ──</span>
+
+Background: Multi-layer gradient section:
+  radial-gradient(ellipse 80% 70% at 50% 50%, rgba(107,63,160,0.3) 0%, transparent 65%)
+  radial-gradient(ellipse 40% 40% at 80% 20%, rgba(34,211,238,0.1) 0%, transparent 50%)
+  #0A0812
+Dot grid overlay
+Padding: 100px 0
+
+CENTERED CONTENT:
+  EYEBROW: "START FREE TODAY"
+
+  HEADLINE: "Your first 50 verified leads
+             are waiting."
+  Font: Space Grotesk, 52px, weight 700, tracking -0.03em, text gradient
+
+  BODY: "No credit card. No sales call required. Just type what you're
+         looking for, and walk away with a verified, enriched, ICP-scored
+         prospect list — in under 60 seconds."
+  Font: Inter, 17px, color #9CA3AF, max-width 520px, centered
+
+  CTA BUTTONS:
+    Primary: "Get 50 Free Leads →" (Galaxy Core gradient, large — padding 16px 40px)
+    Secondary: "Book a 15-min Demo" (outlined, lavender)
+
+  TRUST ROW BENEATH:
+    "✓ No card required  ·  ✓ GDPR & CCPA compliant  ·  ✓ India's deepest B2B data
+     ✓ Verified at export  ·  ✓ Cancel anytime"
+    JetBrains Mono, 11px, #6B7280
+
+  COMPETITOR CALLOUT (small, below trust row):
+    "Used by teams who outgrew Apollo, ZoomInfo, and Lusha."
+    Inter, 13px, color #6B7280, italic
+
+<span class="highlight">── SECTION 10: FOOTER ──</span>
+
+Background: #0F0B1E
+Border-top: 1px solid rgba(139,92,246,0.15)
+Padding: 60px 0 40px
+
+LAYOUT: Logo + tagline left, 4 link columns center/right
+
+LEFT:
+  Logo "leadzen.ai" (large, 20px)
+  Tagline: "Stop Hunting. Start Converting."
+  Color: #A78BFA, italic, Space Grotesk 14px
+  Description: "AI-powered B2B lead generation built on India's
+  deepest verified database."  Inter 13px #6B7280
+
+LINK COLUMNS (Space Grotesk 12px, color #9CA3AF, hover #FAFAF9):
+  Product: Features · Pricing · Integrations · Changelog · API Docs
+  Use Cases: SDR Teams · Marketing · Founders · Agencies · RevOps
+  Company: About · Blog · Careers · Press · Contact
+  Legal: Privacy Policy · Terms of Service · GDPR · CCPA · Cookie Policy
+
+BOTTOM BAR:
+  Left: "© 2025 Leadzen.ai · All rights reserved"
+        + flags: 🇮🇳 India · 🇸🇬 Singapore · 🇦🇪 UAE
+  Right: Social icons (LinkedIn, Twitter/X, YouTube) — simple SVG circles
+
+<span class="section-head">═══ 07. COMPONENT SPECIFICATIONS ═══</span>
+
+<span class="highlight">BUTTONS:</span>
+  Primary: Galaxy Core gradient, Space Grotesk Bold, border-radius 30px
+  Secondary: rgba(139,92,246,0.1) bg + 1px violet border, color lavender
+  Ghost: transparent, 1px white/10 border, color white/70
+  All buttons: transition all 0.2s, cursor pointer, focus-visible outline 2px violet
+
+<span class="highlight">CARDS:</span>
+  Default: background #1C1535, border 1px rgba(107,63,160,0.2), border-radius 16px
+  Elevated: background #231A40, border 1px rgba(139,92,246,0.3), shadow present
+  Feature: glass effect (backdrop-filter blur 12px), left accent border 4px
+  All: padding 28–32px, transition box-shadow + transform 0.3s on hover
+
+<span class="highlight">BADGES / PILLS:</span>
+  Small pill: padding 4px 12px, border-radius 20px, font JetBrains Mono 10px uppercase
+  FREE tier: bg rgba(110,231,183,0.1), color #6EE7B7, border rgba(110,231,183,0.2)
+  PRO tier: bg rgba(245,158,11,0.1), color #FCD34D, border rgba(245,158,11,0.2)
+  ENTERPRISE tier: bg rgba(34,211,238,0.1), color #22D3EE, border rgba(34,211,238,0.2)
+
+<span class="highlight">EYEBROW LABELS:</span>
+  Font: JetBrains Mono, 10–11px, weight 700, uppercase, letter-spacing 0.25em
+  Color: #8B5CF6
+  Display: flex, align-items center, gap 10px
+  ::before: 24px wide, 2px tall, background #8B5CF6 (left accent line)
+
+<span class="highlight">SECTION BACKGROUNDS:</span>
+  Sections alternate: #0A0812 (void) and #0F0B1E (deep)
+  Feature sections: add radial glow
+  Never use pure black (#000000) or pure white (#FFFFFF)
+
+<span class="section-head">═══ 08. ANIMATIONS & INTERACTIONS ═══</span>
+
+<span class="highlight">PAGE LOAD SEQUENCE:</span>
+  0ms:   Nav fades in (opacity 0→1, 300ms)
+  100ms: Badge fades + slides up (opacity 0→1, translateY 16px→0, 400ms)
+  200ms: H1 line 1 fades + slides up (500ms)
+  300ms: H1 line 2 fades + slides up (500ms)
+  400ms: Subheadline fades in (400ms)
+  500ms: CTA buttons fade + slide up (400ms)
+  600ms: Demo card fades in from right (translateX 32px→0, 500ms)
+
+<span class="highlight">SCROLL ANIMATIONS (IntersectionObserver, threshold 0.15):</span>
+  All section content: opacity 0→1, translateY 24px→0, duration 0.6s ease
+  Stats: count-up animation when visible (0 to target value, 1.5s)
+  Feature cards: staggered reveal (100ms delay between cards)
+  Process steps: sequential reveal left to right
+
+<span class="highlight">HOVER STATES:</span>
+  CTA primary: brightness(1.1) + box-shadow + translateY(-2px)
+  Feature cards: translateY(-4px) + border-color brightens + glow shadow
+  Nav links: color transition #9CA3AF → #FAFAF9, 0.2s
+  Logo links: subtle glow on .ai part
+  Social icons: translateY(-3px), color fills
+
+<span class="highlight">THE PULSE ANIMATION (Live badge dot):</span>
+  @keyframes pulse { 0%,100% { opacity:1; box-shadow: 0 0 8px #6EE7B7 }
+                     50%  { opacity:0.4; box-shadow: 0 0 4px #6EE7B7 } }
+  animation: pulse 2s ease-in-out infinite
+
+<span class="section-head">═══ 09. RESPONSIVE BREAKPOINTS ═══</span>
+
+Desktop:  1280px+ → Full layout, two-column hero, 3-col feature grid
+Laptop:   1024px  → Slightly compressed, same layout
+Tablet:   768px   → Hero goes single column, 2-col feature grid
+Mobile:   < 640px → Single column everything, reduced font sizes:
+                    H1: 36px, body: 15px, hide some decorative elements
+
+All padding reduces to 24px horizontal on mobile.
+Nav collapses to hamburger. CTAs stack vertically.
+
+<span class="section-head">═══ 10. ACCESSIBILITY & PERFORMANCE ═══</span>
+
+  - All interactive elements have :focus-visible outline: 2px solid #8B5CF6
+  - Reduce motion: @media (prefers-reduced-motion) removes all animations
+  - Color contrast: all text meets WCAG AA (minimum 4.5:1 ratio)
+  - All CTA buttons have aria-labels
+  - Images/icons have alt text
+  - Semantic HTML: header, nav, main, section, article, footer
+  - No layout shift on load (no external image dependencies)
+  - Single HTML file, no build tools required
+
+<span class="section-head">═══ 11. QUALITY CHECKLIST (verify before output) ═══</span>
+
+Before returning the final code, verify:
+  ✓ All 10 sections are present and in correct order
+  ✓ No inline styles conflict with the defined CSS variables
+  ✓ The dot grid appears on the hero
+  ✓ The floating demo card animates
+  ✓ All 6 feature cards render with correct accent colors
+  ✓ Stats count up on scroll
+  ✓ Google Fonts import is at the top
+  ✓ Mobile layout works at 375px viewport width
+  ✓ CTA buttons have correct gradients
+  ✓ Hover states work on all interactive elements
+  ✓ The copy matches exactly what's specified in this prompt
+  ✓ No placeholder text (no "Lorem ipsum" anywhere)
+  ✓ All fictional names and companies are Indian B2B context
+
+<span class="important">IMPORTANT: Build the entire homepage in a SINGLE .html file with all CSS embedded in a &lt;style&gt; tag and all JavaScript in a &lt;script&gt; tag at the bottom. Do not split into multiple files. Do not use any JavaScript frameworks (no React, Vue, etc). Do not import any CSS frameworks (no Tailwind, Bootstrap). Use only vanilla HTML, CSS, and JavaScript. The file should open directly in a browser with no build step.</span>
+</div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 2: ALL HOMEPAGE COPY (STANDALONE)
+  ════════════════════════════════════════════════════ -->
+  <div class="section-label">
+    <span class="section-num">02</span>
+    <span class="section-name">Complete Homepage Copy — All Sections</span>
+    <div class="section-line"></div>
+  </div>
+
+  <p class="section-sub" style="margin-bottom:40px">
+    Every word on the homepage, organised by section. Copy these directly into the design or CMS. Nothing is a placeholder.
+  </p>
+
+  <!-- NAV -->
+  <div class="section-block">
+    <div class="eyebrow">Nav Bar</div>
+    <div class="copy-block">
+      <div class="copy-block-label">Logo · Nav Links · CTA</div>
+      <div class="headline-display">leadzen<span style="color:var(--violet)">.ai</span></div>
+      <div style="margin-top:14px;font-family:var(--font-m);font-size:12px;color:var(--gray4);line-height:2">
+        Nav Links: <span style="color:var(--white)">Product  ·  Features  ·  Pricing  ·  Blog  ·  Case Studies</span><br/>
+        Secondary: <span style="color:var(--lavender)">Sign In</span><br/>
+        Primary CTA: <span style="color:var(--mint)">Start Free →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="section-block">
+    <div class="eyebrow">Hero Section</div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Live Badge</div>
+      <span class="badge-display">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--mint);display:inline-block"></span>
+        AI-Powered B2B Prospecting · India's Deepest Database · GDPR Compliant
+      </span>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Headline H1 — With Text Gradient</div>
+      <div class="headline-display" style="font-size:clamp(28px,4vw,48px)">
+        <span style="background:linear-gradient(135deg,var(--white),var(--lavender) 50%,var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Stop Hunting.</span><br/>
+        Start Converting.
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Sub-Headline</div>
+      <p class="subline">Find, enrich, and engage your ideal B2B customers — with AI that understands your ICP and data that's verified before it reaches you.</p>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">CTAs + Trust Micro-copy</div>
+      <div class="cta-display">
+        <span class="cta-primary">Get 50 Free Leads →</span>
+        <span class="cta-secondary">See it in action ▶</span>
+      </div>
+      <p style="font-family:var(--font-m);font-size:11px;color:var(--gray6);margin-top:14px;letter-spacing:0.06em">
+        ✓ No credit card required &nbsp;·&nbsp; ✓ 50 free verified contacts &nbsp;·&nbsp; ✓ GDPR compliant
+      </p>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Demo Card Search Query (visual)</div>
+      <p style="font-family:var(--font-m);font-size:12px;color:var(--teal)">"Series A FinTech founders in Mumbai with 20–100 employees..."</p>
+      <p style="font-family:var(--font-m);font-size:11px;color:var(--mint);margin-top:8px">1,284 verified contacts found · 0.8s</p>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-size:12px;font-family:var(--font-b);font-weight:700">AS</div>
+          <div><div style="font-family:var(--font-b);font-size:12px;font-weight:700">Arjun Sharma</div><div style="font-family:var(--font-m);font-size:10px;color:var(--gray4)">VP Sales · NeoStack AI</div></div>
+          <div style="margin-left:auto;font-family:var(--font-m);font-size:9px;color:var(--mint);background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.25);padding:3px 8px;border-radius:10px">✓ Verified</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--teal-dim,#0E7490),var(--teal));display:flex;align-items:center;justify-content:consistent;align-items:center;justify-content:center;font-size:12px;font-family:var(--font-b);font-weight:700">PM</div>
+          <div><div style="font-family:var(--font-b);font-size:12px;font-weight:700">Priya Mehta</div><div style="font-family:var(--font-m);font-size:10px;color:var(--gray4)">Founder · SeriesUp Technologies</div></div>
+          <div style="margin-left:auto;font-family:var(--font-m);font-size:9px;color:var(--mint);background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.25);padding:3px 8px;border-radius:10px">✓ Verified</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--coral),var(--amber));display:flex;align-items:center;justify-content:center;font-size:12px;font-family:var(--font-b);font-weight:700">RB</div>
+          <div><div style="font-family:var(--font-b);font-size:12px;font-weight:700">Rahul Bose</div><div style="font-family:var(--font-m);font-size:10px;color:var(--gray4)">Head of Growth · FinCore India</div></div>
+          <div style="margin-left:auto;font-family:var(--font-m);font-size:9px;color:var(--mint);background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.25);padding:3px 8px;border-radius:10px">✓ Verified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="section-block">
+    <div class="eyebrow">Problem Section</div>
+    <div class="copy-block">
+      <div class="copy-block-label">Section Headline + Body</div>
+      <div class="section-copy-title">Your team is spending 40% of their day doing everything except selling.</div>
+      <p class="section-copy-sub">Bad data kills quota. Manual list-building wastes hours. Outreach goes to wrong people at wrong companies. Your SDRs are researchers, not sellers — and it's destroying your pipeline.</p>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Pain Point Cards (3)</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:12px">
+        <div style="background:rgba(248,113,113,0.05);border:1px solid rgba(248,113,113,0.2);border-left:3px solid var(--coral);border-radius:12px;padding:20px">
+          <div style="font-family:var(--font-m);font-size:9px;color:var(--coral);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px">⚠ 7.5% BOUNCE RATE</div>
+          <div class="feature-title">Bad Data Burns Your Sender Reputation</div>
+          <p class="feature-body">The average B2B team sends to contacts that are 22.5% stale. Every bounce tells Gmail you're spam. Your whole domain suffers.</p>
+        </div>
+        <div style="background:rgba(252,211,77,0.05);border:1px solid rgba(252,211,77,0.2);border-left:3px solid var(--amber);border-radius:12px;padding:20px">
+          <div style="font-family:var(--font-m);font-size:9px;color:var(--amber);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px">⏱ 40% OF THE DAY</div>
+          <div class="feature-title">Manual Research Isn't a Sales Strategy</div>
+          <p class="feature-body">SDRs spend nearly half their working hours on list-building, research, and data entry. That's not selling. That's administration.</p>
+        </div>
+        <div style="background:rgba(248,113,113,0.05);border:1px solid rgba(248,113,113,0.2);border-left:3px solid var(--coral);border-radius:12px;padding:20px">
+          <div style="font-family:var(--font-m);font-size:9px;color:var(--coral);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px">📉 3.1% REPLY RATE</div>
+          <div class="feature-title">Spray-and-Pray Is Dead</div>
+          <p class="feature-body">Generic outreach to unverified lists returns 3.1% reply rates. Teams using verified, intent-filtered data hit 10–15% consistently.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">Transition Line (between problem and solution)</div>
+      <p style="font-family:var(--font-b);font-size:18px;color:var(--lavender);font-style:italic;text-align:center">There's a better way. One platform. Verified data. AI-powered outreach.</p>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section-block">
+    <div class="eyebrow">How It Works — 5 Steps</div>
+    <div class="copy-block">
+      <div class="copy-block-label">Section Headline</div>
+      <div class="section-copy-title">Five steps from ICP to confirmed meeting.</div>
+      <p class="section-copy-sub">Leadzen.ai handles the entire prospecting workflow — so your team shows up to conversations, not spreadsheets.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px">
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:18px;background:var(--surface);border:1px solid rgba(139,92,246,0.2);border-radius:12px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-family:var(--font-b);font-weight:700;font-size:13px;flex-shrink:0">1</div>
+        <div><div class="feature-title" style="color:var(--lavender)">Define Your ICP</div><p class="feature-body">Describe your ideal customer in plain English. Our AI builds your ICP from the description — no filter forms, no dropdowns.</p></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:18px;background:var(--surface);border:1px solid rgba(34,211,238,0.2);border-radius:12px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#0E7490,var(--teal));display:flex;align-items:center;justify-content:center;font-family:var(--font-b);font-weight:700;font-size:13px;flex-shrink:0">2</div>
+        <div><div class="feature-title" style="color:var(--teal)">Find Verified Contacts</div><p class="feature-body">Search 200M+ verified B2B contacts. Every email and phone number checked in real time before it reaches your list.</p></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:18px;background:var(--surface);border:1px solid rgba(110,231,183,0.2);border-radius:12px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#065F46,var(--mint));display:flex;align-items:center;justify-content:center;font-family:var(--font-b);font-weight:700;font-size:13px;flex-shrink:0">3</div>
+        <div><div class="feature-title" style="color:var(--mint)">Enrich with Intelligence</div><p class="feature-body">Firmographic data, funding history, tech stack, intent signals, and hiring patterns — all attached automatically to every contact.</p></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:18px;background:var(--surface);border:1px solid rgba(252,211,77,0.2);border-radius:12px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#92400E,var(--amber));display:flex;align-items:center;justify-content:center;font-family:var(--font-b);font-weight:700;font-size:13px;flex-shrink:0">4</div>
+        <div><div class="feature-title" style="color:var(--amber)">Detect Buying Intent</div><p class="feature-body">SCOUT monitors funding events, hiring surges, and tech stack changes across your target accounts — surfacing in-market companies.</p></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:18px;background:var(--surface);border:1px solid rgba(248,113,113,0.2);border-radius:12px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#991B1B,var(--coral));display:flex;align-items:center;justify-content:center;font-family:var(--font-b);font-weight:700;font-size:13px;flex-shrink:0">5</div>
+        <div><div class="feature-title" style="color:var(--coral)">Launch Personalised Outreach</div><p class="feature-body">OUTRIX writes personalised email, LinkedIn, and call scripts using enrichment context — not templates. Sequences launch automatically.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section-block">
+    <div class="eyebrow">Stats Section</div>
+    <div class="copy-block">
+      <div class="copy-block-label">Headline</div>
+      <div class="section-copy-title">Numbers don't lie. Pipelines do.</div>
+    </div>
+    <div class="copy-block">
+      <div class="copy-block-label">4 Key Stats</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div style="text-align:center;padding:24px 16px;background:var(--surface);border:1px solid rgba(107,63,160,0.2);border-radius:12px">
+          <div class="stat-big">3×</div>
+          <div style="font-family:var(--font-m);font-size:10px;color:var(--gray6);letter-spacing:0.1em;text-transform:uppercase;margin-top:6px">More confirmed meetings vs manual prospecting</div>
+        </div>
+        <div style="text-align:center;padding:24px 16px;background:var(--surface);border:1px solid rgba(107,63,160,0.2);border-radius:12px">
+          <div class="stat-big" style="color:var(--teal)">94%</div>
+          <div style="font-family:var(--font-m);font-size:10px;color:var(--gray6);letter-spacing:0.1em;text-transform:uppercase;margin-top:6px">Average data accuracy across all exports</div>
+        </div>
+        <div style="text-align:center;padding:24px 16px;background:var(--surface);border:1px solid rgba(107,63,160,0.2);border-radius:12px">
+          <div class="stat-big" style="color:var(--violet)">48min</div>
+          <div style="font-family:var(--font-m);font-size:10px;color:var(--gray6);letter-spacing:0.1em;text-transform:uppercase;margin-top:6px">Avg time from signup to first verified lead list</div>
+        </div>
+        <div style="text-align:center;padding:24px 16px;background:var(--surface);border:1px solid rgba(107,63,160,0.2);border-radius:12px">
+          <div class="stat-big" style="color:var(--lavender)">2,000+</div>
+          <div style="font-family:var(--font-m);font-size:10px;color:var(--gray6);letter-spacing:0.1em;text-transform:uppercase;margin-top:6px">B2B teams across India using Leadzen.ai</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section-block">
+    <div class="eyebrow">Testimonials</div>
+    <div class="copy-block">
+      <div class="copy-block-label">Section Headline</div>
+      <div class="section-copy-title">What happens when your data actually works.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="background:var(--surface);border:1px solid rgba(139,92,246,0.2);border-left:4px solid var(--violet);border-radius:12px;padding:24px">
+        <p class="testimonial-text">"We went from 80 cold calls a day with a 2% connect rate to 40 verified outreaches with a 14% reply rate. Leadzen.ai didn't just save us time — it changed what 'pipeline' means for our team."</p>
+        <div class="testimonial-attr">ADITYA KULKARNI · VP SALES · FINTECH SAAS, MUMBAI</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(34,211,238,0.2);border-left:4px solid var(--teal);border-radius:12px;padding:24px">
+        <p class="testimonial-text">"I used to spend Sunday nights building prospect lists for Monday. Now I describe the company I want to find and have a verified list in 30 seconds. My SDRs actually sell now."</p>
+        <div class="testimonial-attr">SNEHA RAGHAVAN · FOUNDER & CEO · B2B HR TECH, BENGALURU</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid rgba(110,231,183,0.2);border-left:4px solid var(--mint);border-radius:12px;padding:24px">
+        <p class="testimonial-text">"The intent signals are the real differentiator. SCOUT told me which companies were actively researching our category. We reached out before they even requested demos from competitors. Three of those became our largest accounts this quarter."</p>
+        <div class="testimonial-attr">VIKRAM NAIR · HEAD OF GROWTH · SERIES B SAAS, CHENNAI</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <div class="section-block">
+    <div class="eyebrow">Final CTA Section</div>
+    <div class="copy-block">
+      <div class="copy-block-label">Headline + Body + CTAs</div>
+      <div class="headline-display" style="text-align:center;font-size:clamp(24px,4vw,44px);margin-bottom:12px">
+        Your first 50 verified leads<br/>are waiting.
+      </div>
+      <p style="text-align:center;color:var(--gray4);font-size:15px;line-height:1.75;max-width:500px;margin:0 auto 24px">No credit card. No sales call required. Just type what you're looking for, and walk away with a verified, enriched, ICP-scored prospect list — in under 60 seconds.</p>
+      <div class="cta-display" style="justify-content:center">
+        <span class="cta-primary" style="padding:14px 36px;font-size:15px">Get 50 Free Leads →</span>
+        <span class="cta-secondary" style="padding:14px 28px;font-size:14px">Book a 15-min Demo</span>
+      </div>
+      <p style="text-align:center;font-family:var(--font-m);font-size:10px;color:var(--gray6);margin-top:16px;letter-spacing:0.06em">
+        ✓ No card required &nbsp;·&nbsp; ✓ GDPR & CCPA compliant &nbsp;·&nbsp; ✓ India's deepest B2B data &nbsp;·&nbsp; ✓ Verified at export &nbsp;·&nbsp; ✓ Cancel anytime
+      </p>
+      <p style="text-align:center;font-size:12px;color:var(--gray6);margin-top:10px;font-style:italic">Used by teams who outgrew Apollo, ZoomInfo, and Lusha.</p>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 3: DESIGN TOKENS REFERENCE
+  ════════════════════════════════════════════════════ -->
+  <div class="section-label">
+    <span class="section-num">03</span>
+    <span class="section-name">Design Tokens Quick Reference</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="spec-label">Primary Backgrounds</div>
+      <div class="spec-value">
+        <span style="font-family:var(--font-m);font-size:11px">
+          #0A0812 — void (page base)<br/>
+          #0F0B1E — deep (sections)<br/>
+          #1C1535 — surface (cards)<br/>
+          #231A40 — elevated (hover)
+        </span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-label">Brand Purples</div>
+      <div class="spec-value">
+        <span style="font-family:var(--font-m);font-size:11px">
+          #6B3FA0 — purple (CTAs)<br/>
+          #8B5CF6 — violet (accents)<br/>
+          #A78BFA — lavender (text)<br/>
+          #C4B5FD — nebula (muted)
+        </span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-label">Accent Colors</div>
+      <div class="spec-value">
+        <span style="font-family:var(--font-m);font-size:11px">
+          #22D3EE — teal (AI/tech)<br/>
+          #6EE7B7 — mint (verified)<br/>
+          #F87171 — coral (urgent)<br/>
+          #FCD34D — amber (premium)
+        </span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-label">Typography Sizes</div>
+      <div class="spec-value">
+        <span style="font-family:var(--font-m);font-size:11px">
+          Display: 56–72px / -0.03em<br/>
+          H2: 36–44px / -0.025em<br/>
+          H3: 24–28px / -0.02em<br/>
+          Body: 16–18px / 1.75lh
+        </span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-label">Key Gradients</div>
+      <div class="spec-value">
+        <span style="font-family:var(--font-m);font-size:11px">
+          Galaxy Core: #6B3FA0→#8B5CF6<br/>
+          Nebula Stream: #8B5CF6→#22D3EE<br/>
+          Deep Space: #6B→#8B→#22<br/>
+          Text Grad: white→lavender→teal
+        </span>
+      </div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-label">Border & Shadow Rules</div>
+      <div class="spec-value">
+        <span style="font-family:var(--font-m);font-size:11px">
+          Cards: rgba(107,63,160,0.2)<br/>
+          Active: rgba(139,92,246,0.4)<br/>
+          Radius: 12–20px on cards<br/>
+          Shadow: 0 8px 40px rgba(0,0,0,0.3)
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 4: ADDITIONAL TIPS
+  ════════════════════════════════════════════════════ -->
+  <div class="section-label">
+    <span class="section-num">04</span>
+    <span class="section-name">Tips for Best Results</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="callout">
+    <p><strong>For Claude (claude.ai):</strong> Use the Projects feature or a fresh conversation. Paste the entire Master Prompt in one message. If the output truncates, follow up with "Continue from [section name]". For best results, request a single HTML file.</p>
+  </div>
+  <div class="callout">
+    <p><strong>For other AI design tools:</strong> The prompt works with Cursor, Bolt.new, v0, and Lovable. Append "Use Tailwind CSS" only if the tool natively supports it. Otherwise, the embedded CSS approach is more reliable.</p>
+  </div>
+  <div class="warn-callout">
+    <p><strong>What to check in the output:</strong> Verify the dot grid renders on the hero, the floating demo card has the animation, all 6 feature cards have correct accent border colors, the gradient text on the headline works, and the stats count up on scroll. These are the most commonly dropped elements in AI-generated outputs.</p>
+  </div>
+  <div class="callout">
+    <p><strong>If you want to modify the copy:</strong> The copy section above (Section 02) contains every word. Edit there first, then include the updated copy in the prompt. Never ask the AI to "figure out the copy" — always provide it explicitly for a homepage.</p>
+  </div>
+
+  <div class="rule"></div>
+  <div style="text-align:center;font-family:var(--font-m);font-size:10px;color:var(--gray6);letter-spacing:0.12em;padding:20px 0">
+    © 2025 LEADZEN.AI &nbsp;·&nbsp; HOMEPAGE DESIGN BRIEF v1.0 &nbsp;·&nbsp; CONFIDENTIAL
+  </div>
+
+</div>
+
+<script>
+function copyPrompt() {
+  const el = document.getElementById('master-prompt');
+  // Get plain text without HTML tags
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    btn.style.color = 'var(--mint)';
+    btn.style.borderColor = 'rgba(110,231,183,0.4)';
+    setTimeout(() => {
+      btn.textContent = 'Copy Prompt';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2500);
+  }).catch(() => {
+    // Fallback for older browsers
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = 'Copy Prompt'; }, 2500);
+  });
+}
+</script>
+</body>
+</html>

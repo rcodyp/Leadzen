@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leadzen.ai — Find buyers, not just contacts.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="leadzen.css" />
+<template id="__bundler_thumbnail" data-bg-color="#0A0812">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0A0812"/>
+    <circle cx="430" cy="560" r="34" fill="#8B5CF6"/>
+    <circle cx="770" cy="500" r="34" fill="#22D3EE"/>
+    <circle cx="600" cy="300" r="34" fill="#FFD23F"/>
+    <path d="M448 540 590 320M620 312 752 480M452 575 740 510" stroke="#A78BFA" stroke-width="9" stroke-linecap="round"/>
+  </svg>
+</template>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo" aria-label="Leadzen.ai home">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="5" cy="18" r="2.4" fill="#8B5CF6"/>
+        <circle cx="19" cy="14" r="2.4" fill="#22D3EE"/>
+        <circle cx="12" cy="5" r="2.4" fill="#FFD23F"/>
+        <path d="M5.8 16.2 11 6.6M13 6.2 18 12.2M6.6 17.4 17 14.4" stroke="#A78BFA" stroke-width="1.1" stroke-linecap="round"/>
+      </svg>
+      leadzen<span>.ai</span>
+    </a>
+    <ul class="nav-links">
+      <!-- PLATFORM mega -->
+      <li class="nav-item has-mega">
+        <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">
+          Platform
+          <svg class="caret-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mega mega-platform" role="menu" aria-label="Platform">
+          <div class="mega-inner">
+            <div class="mega-feature">
+              <div class="mega-eyebrow mono">The platform</div>
+              <div class="mega-feature-title">One workspace for the<br/>whole revenue motion.</div>
+              <p class="mega-feature-sub">Find, enrich, engage and measure, without switching tools — built for teams selling across borders.</p>
+              <a href="Leadzen Platform.html#tour" class="mega-feature-link">Take the product tour →</a>
+            </div>
+            <div class="mega-grid">
+              <a href="Leadzen Platform - Find.html" class="mega-link" role="menuitem" style="--mc:#22D3EE">
+                <span class="mega-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="m20 20-3-3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+                <span class="mega-tx"><b>Find</b><small>Global company &amp; contact search by industry, headcount and funding stage</small></span>
+              </a>
+              <a href="Leadzen Platform - Enrich.html" class="mega-link" role="menuitem" style="--mc:#6EE7B7">
+                <span class="mega-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/></svg></span>
+                <span class="mega-tx"><b>Enrich</b><small>Verified email and firmographic context, refreshed continuously</small></span>
+              </a>
+              <a href="Leadzen Platform - Analyze.html" class="mega-link" role="menuitem" style="--mc:#FFD23F">
+                <span class="mega-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19V11M12 19V5M19 19v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+                <span class="mega-tx"><b>Analyze</b><small>Pipeline by stage, region and rep, with stalls visible early</small></span>
+              </a>
+              <a href="Leadzen Platform - Engage.html" class="mega-link" role="menuitem" style="--mc:#F87171">
+                <span class="mega-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+                <span class="mega-tx"><b>Engage</b><small>Timezone-aware sequences across email, LinkedIn and WhatsApp</small></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- AI AGENTS mega -->
+      <li class="nav-item has-mega">
+        <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">
+          Agents
+          <svg class="caret-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mega mega-agents" role="menu" aria-label="Agents">
+          <div class="mega-agents-head">
+            <span class="mega-eyebrow mono">Your AI revenue team</span>
+            <a href="#agents" class="mega-allagents">All agents →</a>
+          </div>
+          <div class="mega-agents-grid">
+            <a href="Leadzen Agent - ZEN.html" class="agent-link" role="menuitem" style="--mc:#8B5CF6">
+              <span class="mega-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="7" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+              <span class="agent-tx"><span class="agent-name">ZEN</span><small>Guided prospecting · builds your first search</small></span>
+            </a>
+            <a href="Leadzen Agent - LENZ.html" class="agent-link" role="menuitem" style="--mc:#22D3EE">
+              <span class="mega-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M12 8V4M8 13h.5M15.5 13h.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="agent-tx"><span class="agent-name">LENZ</span><small>Analysis agent · reads every prospect</small></span>
+            </a>
+            <a href="Leadzen Agent - LENZ PLUS.html" class="agent-link" role="menuitem" style="--mc:#6EE7B7">
+              <span class="mega-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+              <span class="agent-tx"><span class="agent-name">LENZ PLUS</span><small>Analysis + outreach planning, one pass</small></span>
+            </a>
+            <a href="Leadzen Agent - LENZ PRO.html" class="agent-link" role="menuitem" style="--mc:#F87171">
+              <span class="mega-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              <span class="agent-tx"><span class="agent-name">LENZ PRO<em class="tier soon">Soon</em></span><small>Multi-persona outreach, one company</small></span>
+            </a>
+          </div>
+        </div>
+      </li>
+
+      <!-- SOLUTIONS dropdown -->
+      <li class="nav-item has-mega">
+        <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">
+          Solutions
+          <svg class="caret-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mega mega-drop" role="menu" aria-label="Solutions">
+          <span class="mega-drop-label mono">By region</span>
+          <a href="Leadzen Solutions - Americas.html" class="drop-link" role="menuitem"><b>Americas</b><small>US, Canada, Latin America · timezone-native scheduling</small></a>
+          <a href="Leadzen Solutions - EMEA.html" class="drop-link" role="menuitem"><b>Europe, Middle East &amp; Africa</b><small>GDPR-aligned data collection and processing</small></a>
+          <a href="Leadzen Solutions - APAC.html" class="drop-link" role="menuitem"><b>Asia-Pacific</b><small>WhatsApp as a first-class engagement channel</small></a>
+          <span class="mega-drop-label mono" style="margin-top:6px">By industry</span>
+          <a href="Leadzen Industries.html" class="drop-link" role="menuitem"><b>Industries</b><small>SaaS, HR, manufacturing, finance and 4 more</small></a>
+          <span class="mega-drop-label mono" style="margin-top:6px">Positioning</span>
+          <a href="Leadzen Intelligence.html" class="drop-link" role="menuitem"><b>Buyer Intelligence</b><small>Why we're an intelligence company, not a data one</small></a>
+        </div>
+      </li>
+      <li><a href="Leadzen Industries.html">Industries</a></li>
+      <li><a href="Leadzen Intelligence.html">Intelligence</a></li>
+      <li><a href="https://leadzen.ai/blog" target="_blank" rel="noopener">Resources</a></li>
+      <li><a href="Leadzen Connect with an Expert.html">Work With Us</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#" class="nav-signin">Sign in</a>
+      <a href="Leadzen Connect with an Expert.html" class="nav-cta nav-cta-expert" title="Book 20 min with our team">Connect with an Expert</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#platform">Platform</a>
+  <a href="#">Solutions</a>
+  <a href="#agents">Agents</a>
+  <a href="Leadzen Industries.html">Industries</a>
+  <a href="Leadzen Intelligence.html">Intelligence</a>
+  <a href="https://leadzen.ai/blog" target="_blank" rel="noopener">Resources</a>
+  <a href="Leadzen Connect with an Expert.html">Work With Us</a>
+  <a href="Leadzen Connect with an Expert.html" class="btn btn-primary">Connect with an Expert</a>
+</div>
+
+<main id="top">
+
+<!-- ══ HERO ══ -->
+<section class="hero dotgrid" data-screen-label="Hero">
+  <canvas class="hero-net" id="heroNet" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="live-badge reveal"><span class="live-dot"></span>AI sales intelligence for global revenue teams · 200M+ verified contacts · GDPR compliant</div>
+      <h1 class="reveal"><span class="grad-text" id="hl1">Find the buyer who says yes</span><br/><span id="hl2">in any market, any time zone.</span></h1>
+      <p class="hero-sub reveal">Leadzen.ai finds verified decision-makers, tracks buying intent, and runs multi-threaded outreach across the 13-plus stakeholders in a modern B2B deal, built for teams selling across borders, not just across a CRM.</p>
+      <div class="hero-cta reveal">
+        <a href="Leadzen Connect with an Expert.html" class="btn btn-primary" id="heroCta">Connect with an Expert</a>
+        <a href="#pipeline" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          See it live
+        </a>
+      </div>
+      <p class="trust-micro reveal"><b>✓</b> No credit card &nbsp;·&nbsp; <b>✓</b> 50 verified contacts free &nbsp;·&nbsp; <b>✓</b> Set up in minutes</p>
+    </div>
+
+    <div class="demo-wrap reveal">
+      <svg class="constellation" viewBox="0 0 140 120" fill="none" aria-hidden="true">
+        <line x1="22" y1="92" x2="70" y2="24" stroke="#8B5CF6" stroke-width="1" opacity="0.5"/>
+        <line x1="70" y1="24" x2="118" y2="70" stroke="#22D3EE" stroke-width="1" opacity="0.5"/>
+        <line x1="22" y1="92" x2="118" y2="70" stroke="#FFD23F" stroke-width="1" opacity="0.4"/>
+        <circle cx="22" cy="92" r="4" fill="#8B5CF6"/>
+        <circle cx="70" cy="24" r="5" fill="#22D3EE"/>
+        <circle cx="118" cy="70" r="4" fill="#FFD23F"/>
+      </svg>
+      <div class="demo-float">
+        <div class="demo-card">
+          <div class="search-bar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#A78BFA" stroke-width="2"/><path d="m20 20-3-3" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="search-q" id="heroSearchQ">Series A fintech founders in London, 20–100 staff<span class="caret"></span></span>
+            <span class="ai-badge">AI search</span>
+          </div>
+          <div class="result-count" id="heroResultCount">1,284 verified contacts · 0.8s</div>
+          <div class="contact-row">
+            <div class="avatar" style="background:linear-gradient(135deg,var(--purple),var(--violet))">MC</div>
+            <div><div class="contact-name">Marcus Chen</div><div class="contact-role">VP Sales · NeoStack</div></div>
+            <span class="verified">✓ Verified</span>
+          </div>
+          <div class="contact-row">
+            <div class="avatar" style="background:linear-gradient(135deg,var(--teal-dim),var(--teal))">SA</div>
+            <div><div class="contact-name">Sofia Almeida</div><div class="contact-role">Founder · SeriesUp</div></div>
+            <span class="verified">✓ Verified</span>
+          </div>
+          <div class="contact-row">
+            <div class="avatar" style="background:linear-gradient(135deg,var(--gold),var(--yellow))">DO</div>
+            <div><div class="contact-name">Daniel Okonkwo</div><div class="contact-role">Head of Growth · FinCore</div></div>
+            <span class="verified">✓ Verified</span>
+          </div>
+          <button class="view-all">Open all results →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOCIAL PROOF ══ -->
+<section class="proof">
+  <div class="proof-inner">
+    <div class="proof-label">Trusted by 2,000+ B2B teams selling across borders</div>
+    <div class="proof-logos">
+      <span class="proof-logo">Northwind</span>
+      <span class="proof-logo">Lumen</span>
+      <span class="proof-logo">Vantage</span>
+      <span class="proof-logo">Helio</span>
+    </div>
+    <div class="proof-stats">
+      <span class="proof-stat"><b>13+</b> stakeholders in an average B2B purchase <small class="cite">(Forrester, 2025)</small></span>
+      <span class="proof-stat"><b>94%</b> of buyers used an LLM in their last purchase <small class="cite">(G2, 2025)</small></span>
+      <span class="proof-stat"><b>30%</b> of B2B contact data decays yearly, unrefreshed <small class="cite">(industry benchmark)</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PIPELINE (interactive) ══ -->
+<section class="pipeline-sec sec-pad" id="pipeline" data-screen-label="Pipeline">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow center-eb">See the whole deal, not just your slice of it</div>
+      <h2 class="h2">Every stage, every region, one view.</h2>
+      <p class="lead center-lead">Every contact moves through five automated stages, verified, enriched, scored and engaged, wherever your team sells.</p>
+    </div>
+
+    <div class="pipeline reveal" id="pipeline">
+      <div class="pipe-live"><span class="live-dot"></span><span class="mono" id="pipeLiveLabel">Processing live</span></div>
+      <div class="pipe-track" id="pipeTrack" aria-hidden="true"></div>
+      <div class="pipe-stages" id="pipeStages">
+        <button class="pipe-stage" data-stage="0" style="--sc:#8B5CF6">
+          <div class="pipe-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="pipe-name">Sources</div>
+          <div class="pipe-count mono" data-seed="48210">48,210</div>
+          <div class="pipe-detail">Pull from 200M+ contacts across firmographic, hiring and funding data.</div>
+        </button>
+        <button class="pipe-stage" data-stage="1" style="--sc:#22D3EE">
+          <div class="pipe-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="pipe-name">Verify</div>
+          <div class="pipe-count mono" data-seed="44680">44,680</div>
+          <div class="pipe-detail">Every email and phone checked in real time. 94% accuracy at export.</div>
+        </button>
+        <button class="pipe-stage" data-stage="2" style="--sc:#6EE7B7">
+          <div class="pipe-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/></svg></div>
+          <div class="pipe-name">Enrich</div>
+          <div class="pipe-count mono" data-seed="44680">44,680</div>
+          <div class="pipe-detail">Funding, tech stack, headcount and intent attached to every record.</div>
+        </button>
+        <button class="pipe-stage" data-stage="3" style="--sc:#FFD23F">
+          <div class="pipe-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 14.5 9 21 9.5 16 14l1.6 6.5L12 17l-5.6 3.5L8 14 3 9.5 9.5 9 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <div class="pipe-name">Score</div>
+          <div class="pipe-count mono" data-seed="9840">9,840</div>
+          <div class="pipe-detail">AI ranks fit against your ICP, so reps work the best accounts first.</div>
+        </button>
+        <button class="pipe-stage" data-stage="4" style="--sc:#F87171">
+          <div class="pipe-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16v12H7l-3 3V5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div class="pipe-name">Engage</div>
+          <div class="pipe-count mono" data-seed="1284">1,284</div>
+          <div class="pipe-detail">Personalised email, LinkedIn and call steps launch automatically.</div>
+        </button>
+      </div>
+      <div class="pipe-foot">
+        <div class="pipe-outcome">
+          <span class="pipe-outcome-num mono" id="pipeMeetings" data-target="312" data-suffix="">0</span>
+          <span class="pipe-outcome-label">meetings booked this week →</span>
+        </div>
+        <span class="pipe-hint mono">Hover a stage for detail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLATFORM TOUR (tabbed snips) ══ -->
+<section class="platform sec-pad" id="platform" data-screen-label="Platform">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow center-eb">Inside the platform</div>
+      <h2 class="h2">One workspace for the whole motion.</h2>
+      <p class="lead center-lead">Find, enrich, engage and measure, all without switching tools. Click through the workflow.</p>
+    </div>
+
+    <div class="tour reveal">
+      <div class="tour-tabs" role="tablist" id="tourTabs">
+        <button class="tour-tab active" data-tab="find" role="tab" aria-selected="true">
+          <span class="tour-tab-no mono">01</span> Find
+        </button>
+        <button class="tour-tab" data-tab="enrich" role="tab" aria-selected="false">
+          <span class="tour-tab-no mono">02</span> Enrich
+        </button>
+        <button class="tour-tab" data-tab="engage" role="tab" aria-selected="false">
+          <span class="tour-tab-no mono">03</span> Engage
+        </button>
+        <button class="tour-tab" data-tab="analyze" role="tab" aria-selected="false">
+          <span class="tour-tab-no mono">04</span> Analyze
+        </button>
+      </div>
+
+      <div class="tour-window">
+        <div class="tour-chrome">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="tour-url mono" id="tourUrl">app.leadzen.ai/search</span>
+        </div>
+
+        <!-- FIND -->
+        <div class="tour-panel active" data-panel="find">
+          <div class="snip-find">
+            <div class="snip-search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="#A78BFA" stroke-width="2"/><path d="m20 20-3-3" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/></svg>
+              <span class="mono">SaaS companies in North America · Series A–B · hiring sales</span>
+              <span class="ai-badge">AI search</span>
+            </div>
+            <div class="snip-filters" id="snipFilters">
+              <button class="snip-chip active" data-base="2140">Industry: SaaS</button>
+              <button class="snip-chip active" data-base="2140">North America</button>
+              <button class="snip-chip" data-base="2140">Series A–B</button>
+              <button class="snip-chip" data-base="2140">Hiring sales</button>
+              <button class="snip-chip" data-base="2140">50–200 staff</button>
+            </div>
+            <div class="snip-resultbar">
+              <span class="mono" id="snipCount">2,140</span> matches
+              <span class="snip-acc">94% verified</span>
+            </div>
+            <div class="snip-rows" id="snipRows">
+              <div class="snip-row">
+                <div class="avatar sm" style="background:linear-gradient(135deg,var(--purple),var(--violet))">ER</div>
+                <div class="snip-row-main"><div class="contact-name">Elena Rossi</div><div class="contact-role">VP Sales · Tessellate</div></div>
+                <span class="score-pill">92 fit</span><span class="verified">✓</span>
+              </div>
+              <div class="snip-row">
+                <div class="avatar sm" style="background:linear-gradient(135deg,var(--teal-dim),var(--teal))">TV</div>
+                <div class="snip-row-main"><div class="contact-name">Tomás Vidal</div><div class="contact-role">Founder · Quanta Labs</div></div>
+                <span class="score-pill">88 fit</span><span class="verified">✓</span>
+              </div>
+              <div class="snip-row">
+                <div class="avatar sm" style="background:linear-gradient(135deg,var(--gold),var(--yellow))">GL</div>
+                <div class="snip-row-main"><div class="contact-name">Grace Lin</div><div class="contact-role">CRO · BrightPay</div></div>
+                <span class="score-pill">85 fit</span><span class="verified">✓</span>
+              </div>
+              <div class="snip-row">
+                <div class="avatar sm" style="background:linear-gradient(135deg,var(--coral),var(--gold))">OH</div>
+                <div class="snip-row-main"><div class="contact-name">Omar Haddad</div><div class="contact-role">Head of Sales · Loopwork</div></div>
+                <span class="score-pill">81 fit</span><span class="verified">✓</span>
+              </div>
+            </div>
+          </div>
+          <p class="tour-caption">Describe your ideal customer in plain language. Filter by industry, headcount, funding stage and tech stack, then narrow to accounts showing real buying intent, in every region.</p>
+        </div>
+
+        <!-- ENRICH -->
+        <div class="tour-panel" data-panel="enrich">
+          <div class="snip-enrich">
+            <div class="snip-profile">
+              <div class="avatar lg" style="background:linear-gradient(135deg,var(--purple),var(--violet))">ER</div>
+              <div>
+                <div class="snip-pname">Elena Rossi</div>
+                <div class="contact-role">VP Sales · Tessellate · Amsterdam</div>
+                <div class="snip-tags">
+                  <span class="tag">elena@tessellate.io ✓</span>
+                  <span class="tag">+31 ••••• 4821 ✓</span>
+                </div>
+              </div>
+              <div class="fit-ring" style="--p:92">
+                <span class="fit-ring-num mono">92</span>
+                <span class="fit-ring-lbl">ICP fit</span>
+              </div>
+            </div>
+            <div class="snip-grid">
+              <div class="snip-block">
+                <div class="snip-block-h">Firmographics</div>
+                <div class="snip-kv"><span>Headcount</span><b>120</b></div>
+                <div class="snip-kv"><span>Revenue</span><b>$8M ARR</b></div>
+                <div class="snip-kv"><span>HQ</span><b>Amsterdam</b></div>
+              </div>
+              <div class="snip-block">
+                <div class="snip-block-h">Funding</div>
+                <div class="snip-kv"><span>Stage</span><b>Series B</b></div>
+                <div class="snip-kv"><span>Raised</span><b class="acc">$24M</b></div>
+                <div class="snip-kv"><span>Last round</span><b>4 mo ago</b></div>
+              </div>
+              <div class="snip-block">
+                <div class="snip-block-h">Tech stack</div>
+                <div class="snip-tags wrap">
+                  <span class="tag">Salesforce</span><span class="tag">Segment</span><span class="tag">Slack</span><span class="tag">AWS</span>
+                </div>
+              </div>
+              <div class="snip-block">
+                <div class="snip-block-h">Buying signals</div>
+                <div class="snip-signal"><span class="sig-dot"></span>Hiring 6 SDRs</div>
+                <div class="snip-signal"><span class="sig-dot"></span>New VP Marketing</div>
+                <div class="snip-signal"><span class="sig-dot acc"></span>Researching CRM tools</div>
+              </div>
+            </div>
+          </div>
+          <p class="tour-caption">Enrichment runs on continuous refresh, not a one-time export, so a list built in January is still accurate in June.</p>
+        </div>
+
+        <!-- ENGAGE -->
+        <div class="tour-panel" data-panel="engage">
+          <div class="snip-engage">
+            <div class="snip-seq">
+              <div class="snip-seq-h mono">Sequence · 4 steps</div>
+              <div class="seq-step done"><span class="seq-i">✓</span><div><b>Day 1 — Email</b><span>Intro + funding hook</span></div></div>
+              <div class="seq-step active"><span class="seq-i">2</span><div><b>Day 3 — LinkedIn</b><span>Connect + note</span></div></div>
+              <div class="seq-step"><span class="seq-i">3</span><div><b>Day 5 — Email</b><span>Case study</span></div></div>
+              <div class="seq-step"><span class="seq-i">4</span><div><b>Day 8 — Call</b><span>Script ready</span></div></div>
+            </div>
+            <div class="snip-mail">
+              <div class="snip-mail-top"><span class="ai-badge">Drafted by LENZ PLUS</span><span class="mono snip-open">ready to copy</span></div>
+              <div class="snip-mail-sub">Quick one on <mark>Tessellate's Series B</mark></div>
+              <p class="snip-mail-body">Hi <mark>Elena</mark>, congrats on the <mark>$24M round</mark> — scaling a sales team from <mark>120</mark> usually means more pipeline pressure, fast.</p>
+              <p class="snip-mail-body">We help <mark>SaaS teams worldwide</mark> book 3× more meetings from verified data. Worth a quick look?</p>
+              <div class="snip-mail-foot"><span class="btn-mini">Copy draft</span><span class="mono">you send it, from your own inbox</span></div>
+            </div>
+          </div>
+          <p class="tour-caption">Sequence email, LinkedIn and WhatsApp from one queue, with send times that respect the recipient's local hours, not the sender's.</p>
+        </div>
+
+        <!-- ANALYZE -->
+        <div class="tour-panel" data-panel="analyze">
+          <div class="snip-analyze">
+            <div class="snip-metrics">
+              <div class="snip-metric"><div class="snip-metric-num mono acc">11.2%</div><div class="snip-metric-lbl">Reply rate</div></div>
+              <div class="snip-metric"><div class="snip-metric-num mono">312</div><div class="snip-metric-lbl">Meetings booked</div></div>
+              <div class="snip-metric"><div class="snip-metric-num mono">$4.2M</div><div class="snip-metric-lbl">Pipeline created</div></div>
+              <div class="snip-metric"><div class="snip-metric-num mono">8.4×</div><div class="snip-metric-lbl">ROI</div></div>
+            </div>
+            <div class="snip-chart">
+              <div class="snip-chart-h mono">Meetings booked · last 6 weeks</div>
+              <div class="snip-bars">
+                <div class="snip-bar" style="--h:38%"></div>
+                <div class="snip-bar" style="--h:52%"></div>
+                <div class="snip-bar" style="--h:47%"></div>
+                <div class="snip-bar" style="--h:68%"></div>
+                <div class="snip-bar" style="--h:81%"></div>
+                <div class="snip-bar acc" style="--h:100%"></div>
+              </div>
+            </div>
+          </div>
+          <p class="tour-caption">See pipeline by stage, rep and region, with stall points visible before the forecast call, not during it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ══ -->
+<section class="problem sec-pad" data-screen-label="Problem">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow center-eb">The cost of selling the old way</div>
+      <h2 class="h2">Global growth is lost to four preventable problems.</h2>
+      <p class="lead center-lead">Manual research, invisible committees, decaying data and single-region playbooks quietly cap what your team can sell, and where they can sell it.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-stat"><svg class="pain-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13" r="8" stroke="#F87171" stroke-width="1.6"/><path d="M12 9v4l3 2M9 3h6" stroke="#F87171" stroke-width="1.6" stroke-linecap="round"/></svg>~72% of seller time</div>
+        <div class="pain-title">Reps research more than they sell</div>
+        <p class="pain-body">Most of a seller's week goes to non-selling work: compiling account information, formatting proposals, chasing the right contact. Every hour spent confirming a title is an hour not spent on a live conversation.</p>
+      </div>
+      <div class="pain-card amber reveal">
+        <div class="pain-stat"><svg class="pain-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" stroke="#FFD23F" stroke-width="1.7" stroke-linecap="round"/></svg>13 + 9 stakeholders</div>
+        <div class="pain-title">The deal stalls in a committee you can't see</div>
+        <p class="pain-body">A rep who maps one champion is mapping roughly a tenth of the room. Most of the buying committee never speaks to the seller directly until late in the cycle, if at all.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-stat"><svg class="pain-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z" stroke="#F87171" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4M12 17v.5" stroke="#F87171" stroke-width="1.8" stroke-linecap="round"/></svg>~30% annual decay</div>
+        <div class="pain-title">Contact data goes stale faster than you refresh it</div>
+        <p class="pain-body">A list built in January is measurably wrong by the following January. People change roles, companies restructure, and an accurate record quietly becomes a bounce or a missed decision-maker.</p>
+      </div>
+      <div class="pain-card amber reveal">
+        <div class="pain-stat"><svg class="pain-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7l7 7 4-4 7 7M21 14v4h-4" stroke="#FFD23F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>10.2 channels used</div>
+        <div class="pain-title">One region's playbook does not travel</div>
+        <p class="pain-body">A cadence tuned for a nine-to-five buyer sends outreach at 2 a.m. somewhere else. Approval paths, preferred channels and even the expected first touch shift by market. A single-region playbook is invisible waste.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AI AGENTS ══ -->
+<section class="features sec-pad" id="agents" data-screen-label="Agents">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow center-eb">Meet the agents</div>
+      <h2 class="h2">Four agents, one job each, working together.</h2>
+      <p class="lead center-lead">ZEN gets you started, LENZ reads every prospect, LENZ PLUS turns that into an outreach plan, and LENZ PRO extends it across a whole buying committee, coming in V2.</p>
+    </div>
+    <div class="feat-grid cols-4" id="featGrid">
+
+      <article class="feat-card reveal" tabindex="0" style="--acc:#8B5CF6;--acc-bg:rgba(139,92,246,0.12);--acc-br:rgba(139,92,246,0.3);--acc-glow:rgba(139,92,246,0.22)">
+        <div class="feat-top">
+          <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="7" r="3.2" stroke="#8B5CF6" stroke-width="1.6"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke="#8B5CF6" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="bot-name">ZEN</div>
+        <div class="bot-role">Guided prospecting</div>
+        <div class="feat-head">Your first list in one session</div>
+        <p class="feat-body">ZEN asks what good looks like for your territory, builds the first search, and hands off a working list in minutes instead of a half day of manual filtering.</p>
+        <div class="feat-more">Onboards new reps and new regional teams onto the same search logic, and suggests adjacent segments a rep may not have considered.</div>
+        <span class="feat-expand mono">Details +</span>
+      </article>
+
+      <article class="feat-card reveal" tabindex="0" style="--acc:#22D3EE;--acc-bg:rgba(34,211,238,0.12);--acc-br:rgba(34,211,238,0.3);--acc-glow:rgba(34,211,238,0.2)">
+        <div class="feat-top">
+          <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3" stroke="#22D3EE" stroke-width="1.6"/><path d="M12 8V4M8 13h.5M15.5 13h.5" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="bot-name">LENZ</div>
+        <div class="bot-role">Analysis agent</div>
+        <div class="feat-head">A full read on any prospect, instantly</div>
+        <p class="feat-body">LENZ analyzes a company or contact the moment you need it — verification, firmographic context and buying signal, in one pass.</p>
+        <div class="feat-more">Waterfall-verified analysis, buying-intent reads, and org-chart flags, run on the records you actually open.</div>
+        <span class="feat-expand mono">Details +</span>
+      </article>
+
+      <article class="feat-card reveal" tabindex="0" style="--acc:#6EE7B7;--acc-bg:rgba(110,231,183,0.12);--acc-br:rgba(110,231,183,0.3);--acc-glow:rgba(110,231,183,0.2)">
+        <div class="feat-top">
+          <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="#6EE7B7" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        </div>
+        <div class="bot-name">LENZ PLUS</div>
+        <div class="bot-role">Analysis + outreach planning</div>
+        <div class="feat-head">Know how to approach them, not just who they are</div>
+        <p class="feat-body">LENZ Plus turns LENZ's analysis into a recommended angle and a drafted message — ready for you to send from your own account.</p>
+        <div class="feat-more">Never sends on its own behalf. You stay the one hitting send.</div>
+        <span class="feat-expand mono">Details +</span>
+      </article>
+
+      <article class="feat-card reveal soon-card" tabindex="0" style="--acc:#F87171;--acc-bg:rgba(248,113,113,0.12);--acc-br:rgba(248,113,113,0.3);--acc-glow:rgba(248,113,113,0.2)">
+        <div class="feat-top">
+          <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="#F87171" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="bot-name">LENZ PRO <em class="tier soon">Soon</em></div>
+        <div class="bot-role">Multi-persona outreach</div>
+        <div class="feat-head">One export. Every persona in the room</div>
+        <p class="feat-body">Coming in V2: maps the decision maker, the influencer and the end user inside one company into a single, consolidated outreach strategy.</p>
+        <div class="feat-more">Built on top of LENZ Plus — the fastest way in once it ships is running that today.</div>
+        <span class="feat-expand mono">Details +</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPARE ══ -->
+<section class="compare-sec sec-pad" id="compare-stack" data-screen-label="Compare">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow center-eb">Why one platform beats five subscriptions</div>
+      <h2 class="h2">What teams replace when they move to Leadzen.</h2>
+      <p class="lead center-lead">Organizations are consolidating from eight or more point solutions down to four to six platforms. This is that consolidation, mapped.</p>
+    </div>
+    <div class="stack-compare reveal">
+      <div class="stack-row stack-head">
+        <span class="stack-dim">Dimension</span>
+        <span class="stack-old">Stitched-together stack</span>
+        <span class="stack-new">Leadzen.ai</span>
+      </div>
+      <div class="stack-row"><span class="stack-dim">Prospect analysis</span><span class="stack-old">Manual research per contact</span><span class="stack-new">Instant analysis on demand (LENZ)</span></div>
+      <div class="stack-row"><span class="stack-dim">Outreach planning</span><span class="stack-old">Rep writes every message from scratch</span><span class="stack-new">Strategy and drafts generated in one pass (LENZ Plus)</span></div>
+      <div class="stack-row"><span class="stack-dim">Channels</span><span class="stack-old">Email only, or a separate tool per channel</span><span class="stack-new">Email, LinkedIn and WhatsApp from one queue</span></div>
+      <div class="stack-row"><span class="stack-dim">Global send timing</span><span class="stack-old">Sender's timezone by default</span><span class="stack-new">Recipient-timezone-aware scheduling</span></div>
+      <div class="stack-row"><span class="stack-dim">Setup for a new region</span><span class="stack-old">Manual, tribal-knowledge dependent</span><span class="stack-new">Guided by ZEN in a single session</span></div>
+      <div class="stack-row"><span class="stack-dim">Where pipeline lives</span><span class="stack-old">Split across a CRM, a spreadsheet, and a BI tool</span><span class="stack-new">One analytics view (Analyze)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESULTS / STATS ══ -->
+<section class="stats sec-pad" id="results" data-screen-label="Results">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow center-eb">The numbers behind global selling</div>
+      <h2 class="h2">What changes when the data is right.</h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-cell reveal"><div class="stat-num" style="color:var(--yellow)" data-target="3" data-suffix="×">0</div><div class="stat-label">More confirmed meetings vs manual prospecting</div></div>
+      <div class="stat-cell reveal"><div class="stat-num" style="color:var(--teal)" data-target="94" data-suffix="%">0</div><div class="stat-label">Average data accuracy at export</div></div>
+      <div class="stat-cell reveal"><div class="stat-num" style="color:var(--mint)" data-target="48" data-suffix="min">0</div><div class="stat-label">From signup to first verified list</div></div>
+      <div class="stat-cell reveal"><div class="stat-num" style="color:var(--lavender)" data-target="2000" data-suffix="+" data-comma="1">0</div><div class="stat-label">B2B teams running on Leadzen</div></div>
+    </div>
+
+    <div class="compare reveal" id="compare">
+      <div class="compare-title">Reply rate — industry average vs Leadzen teams</div>
+      <div class="bar-row">
+        <span class="bar-name">Industry average</span>
+        <div class="bar-track"><div class="bar-fill industry" data-w="20.7" style="width:0">3.1%</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-name">Leadzen teams</span>
+        <div class="bar-track"><div class="bar-fill lead" data-w="74.7" style="width:0">11.2%</div></div>
+      </div>
+    </div>
+
+    <div class="bench-row reveal">
+      <div class="bench-cell"><b>34%</b><span>avg. deal-size increase from sales intelligence tools</span><small class="cite">WifiTalents, 2026</small></div>
+      <div class="bench-cell"><b>27%</b><span>avg. sales-productivity increase</span><small class="cite">WifiTalents, 2026</small></div>
+      <div class="bench-cell"><b>6×</b><span>higher transaction rate, personalized vs generic outreach</span><small class="cite">WifiTalents, 2026</small></div>
+      <div class="bench-cell"><b>2–3×</b><span>higher close rate, multi-threaded vs single-threaded</span><small class="cite">Prospeo, 2026</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testi sec-pad" id="testimonials" data-screen-label="Testimonials">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow center-eb">From the teams using it</div>
+      <h2 class="h2">What changes when the data works.</h2>
+      <p class="lead center-lead placeholder-note">Template framework below — to be replaced with real, permissioned customer quotes before this section goes live.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card testi-template reveal">
+        <span class="testi-flag mono">Template — pending real quote</span>
+        <p class="testi-quote">"[ Quote focus: how the team went from a single-region motion to selling across multiple regions without adding headcount, and what changed in time-to-first-meeting. ]"</p>
+        <div class="testi-foot">
+          <div class="testi-av" style="background:linear-gradient(135deg,var(--purple),var(--violet))"></div>
+          <div><div class="testi-name">[ Name ], Global VP of Sales</div><div class="testi-attr">[ COMPANY ] · MID-MARKET SAAS</div></div>
+        </div>
+      </div>
+      <div class="testi-card testi-template reveal">
+        <span class="testi-flag mono">Template — pending real quote</span>
+        <p class="testi-quote">"[ Quote focus: pipeline visibility before, split across tools, versus after, one view by stage and region, with a specific number they're comfortable sharing publicly. ]"</p>
+        <div class="testi-foot">
+          <div class="testi-av" style="background:linear-gradient(135deg,var(--teal-dim),var(--teal))"></div>
+          <div><div class="testi-name">[ Name ], RevOps Director</div><div class="testi-attr">[ COMPANY ] · ENTERPRISE</div></div>
+        </div>
+      </div>
+      <div class="testi-card testi-template reveal">
+        <span class="testi-flag mono">Template — pending real quote</span>
+        <p class="testi-quote">"[ Quote focus: the moment the team realized their outreach playbook did not travel to a new region, and what they changed. ]"</p>
+        <div class="testi-foot">
+          <div class="testi-av" style="background:linear-gradient(135deg,var(--gold),var(--yellow))"></div>
+          <div><div class="testi-name">[ Name ], Founder &amp; CEO</div><div class="testi-attr">[ COMPANY ] · SCALING INTO NEW MARKETS</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section class="pricing-sec sec-pad" id="pricing" data-screen-label="Pricing">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="eyebrow center-eb">Simple pricing, global from day one</div>
+      <h2 class="h2">Start finding your next customer, wherever they are.</h2>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-for">Individual reps or small teams testing a new region</div>
+        <div class="price-amt">[ insert price ] <span>/ seat / mo</span></div>
+        <ul class="price-feats">
+          <li>Core Find + Enrich</li>
+          <li>Email sequencing</li>
+          <li>Single region</li>
+        </ul>
+        <a href="https://leadzen.ai/signup" class="btn btn-secondary price-btn">Start free</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Most popular</div>
+        <div class="price-name">Growth</div>
+        <div class="price-for">Teams running active outbound across multiple regions</div>
+        <div class="price-amt">[ insert price ] <span>/ seat / mo</span></div>
+        <ul class="price-feats">
+          <li>Everything in Starter</li>
+          <li>LENZ analysis, on demand</li>
+          <li>Multi-channel Engage</li>
+          <li>Region-level Analyze</li>
+        </ul>
+        <a href="https://leadzen.ai/signup" class="btn btn-primary price-btn">Start free</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Enterprise / Global</div>
+        <div class="price-for">Organizations selling across five-plus countries or currencies</div>
+        <div class="price-amt">Custom</div>
+        <ul class="price-feats">
+          <li>Everything in Growth</li>
+          <li>LENZ Plus outreach planning</li>
+          <li>Dedicated regional support</li>
+          <li>Custom data-residency terms</li>
+        </ul>
+        <a href="https://leadzen.ai/pricing" class="btn btn-secondary price-btn">Talk to sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="cta-sec dotgrid" data-screen-label="CTA">
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="eyebrow center-eb reveal">Start free today</div>
+    <h2 class="cta-h reveal">Your next customer might be in a market you haven't searched yet.</h2>
+    <p class="cta-body reveal">See how Leadzen.ai finds, verifies, and engages buyers across every region your team sells into.</p>
+    <div class="cta-row reveal">
+      <a href="Leadzen Connect with an Expert.html" class="btn btn-primary" style="padding:16px 38px;font-size:16px">Connect with an Expert</a>
+      <a href="https://leadzen.ai/pricing" class="btn btn-secondary" style="padding:16px 32px;font-size:16px">View pricing</a>
+    </div>
+    <p class="cta-trust reveal"><b>✓</b> No card required &nbsp;·&nbsp; <b>✓</b> GDPR-aligned data handling &nbsp;·&nbsp; <b>✓</b> Cancel anytime</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="wrap" style="padding-bottom:36px;border-bottom:1px solid var(--line);margin-bottom:36px">
+    <a href="Leadzen Homepage.html" class="logo" style="font-size:20px">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="5" cy="18" r="2.4" fill="#8B5CF6"/><circle cx="19" cy="14" r="2.4" fill="#22D3EE"/><circle cx="12" cy="5" r="2.4" fill="#FFD23F"/>
+        <path d="M5.8 16.2 11 6.6M13 6.2 18 12.2M6.6 17.4 17 14.4" stroke="#A78BFA" stroke-width="1.1" stroke-linecap="round"/>
+      </svg>
+      leadzen<span>.ai</span>
+    </a>
+    <div class="foot-tag">Not a data company. An intelligence company.</div>
+    <p class="foot-desc" style="max-width:420px">AI-powered B2B lead generation, built on a verified database and an intelligence layer refreshed every quarter — not a static export.</p>
+  </div>
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h5>Solutions</h5>
+      <a href="Leadzen Platform - Find.html">Find</a><a href="Leadzen Platform - Enrich.html">Enrich</a><a href="Leadzen Platform - Engage.html">Engage</a><a href="Leadzen Platform - Analyze.html">Analyze</a><a href="Leadzen Industries.html">Industries</a>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <a href="Leadzen About Us.html">About Us</a><a href="Leadzen Careers.html">Careers</a><a href="Leadzen Investors.html">Investors</a><a href="Leadzen Newsroom.html">Newsroom</a><a href="Leadzen Press Release.html">Press Release</a>
+    </div>
+    <div class="foot-col">
+      <h5>Why Leadzen</h5>
+      <a href="Leadzen Intelligence.html">Why Leadzen.ai</a><a href="Leadzen Intelligence.html#buyer-intelligence">Buyer Intelligence</a><a href="Leadzen Contact Us.html">Contact Us</a><a href="Leadzen Case Study.html">Case Studies</a>
+    </div>
+    <div class="foot-col">
+      <h5>More</h5>
+      <a href="https://leadzen.ai/blog" target="_blank" rel="noopener">Blog</a><a href="Leadzen Guides.html">Guides</a><a href="Leadzen Outreach For Leads.html">Outreach For Leads</a><a href="Leadzen Explore Our Data Lists.html">Explore Our Data Lists</a>
+    </div>
+    <div class="foot-col">
+      <h5>Connect</h5>
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:15px;height:15px"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>Facebook</a>
+      <a href="#" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:15px;height:15px"><path d="M18.9 2H22l-7.3 8.3L23 22h-6.6l-5.2-6.8L5.3 22H2l7.8-8.9L1.7 2h6.8l4.7 6.2L18.9 2Z"/></svg>Twitter</a>
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:15px;height:15px"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM0 8h5v16H0V8Zm7.5 0H12v2.2h.07c.63-1.2 2.17-2.46 4.46-2.46C21.4 7.74 24 10 24 14.6V24h-5v-8.3c0-2-.04-4.55-2.77-4.55-2.78 0-3.2 2.17-3.2 4.4V24h-5V8Z"/></svg>LinkedIn</a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:15px;height:15px"><path d="M12 2c2.7 0 3 0 4.1.06 1.1.05 1.8.22 2.4.46.7.27 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.24.6.4 1.3.46 2.4.06 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.05 1.1-.22 1.8-.46 2.4a4.6 4.6 0 0 1-1.1 1.7 4.6 4.6 0 0 1-1.7 1.1c-.6.24-1.3.4-2.4.46-1.1.06-1.4.06-4.1.06s-3 0-4.1-.06c-1.1-.05-1.8-.22-2.4-.46a4.6 4.6 0 0 1-1.7-1.1 4.6 4.6 0 0 1-1.1-1.7c-.24-.6-.4-1.3-.46-2.4C2 15 2 14.7 2 12s0-3 .06-4.1c.05-1.1.22-1.8.46-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.6-.24 1.3-.4 2.4-.46C9 2 9.3 2 12 2Zm0 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.2-2.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg>Instagram</a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:15px;height:15px"><path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>YouTube</a>
+    </div>
+    <div class="foot-col">
+      <h5>Tools</h5>
+      <a href="Leadzen Lead Scoring.html">Lead Scoring</a><a href="Leadzen ROI Calculator.html">ROI Calculator</a><a href="Leadzen Email Signature.html">Email Signature</a>
+    </div>
+    <div class="foot-col">
+      <h5>Resources</h5>
+      <a href="Leadzen Archives.html">Archives</a><a href="Leadzen Case Study.html">Case Study</a><a href="Leadzen Success Story.html">Success Story</a><a href="Leadzen About Resources.html">About Resources</a>
+    </div>
+    <div class="foot-col">
+      <h5>Information</h5>
+      <a href="Leadzen Privacy Policy.html">Privacy Policy</a><a href="Leadzen Cookie Policy.html">Cookie Policy</a><a href="Leadzen Dont Sell My Info.html">Don't Sell My Info</a><a href="Leadzen Terms And Conditions.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 Leadzen.ai · All rights reserved &nbsp;·&nbsp; <a href="Leadzen Privacy Policy.html" style="color:var(--g6)">Privacy Policy</a> · <a href="Leadzen Terms And Conditions.html" style="color:var(--g6)">Terms of Service</a> · <a href="Leadzen Cookie Policy.html" style="color:var(--g6)">Cookie Settings</a></div>
+  </div>
+</footer>
+
+<!-- Tweak defaults (host persists this block) -->
+<script>
+  window.LEADZEN_TWEAKS = /*EDITMODE-BEGIN*/{
+    "accent": "#FFD23F",
+    "headline1": "Find the buyer who says yes",
+    "headline2": "in any market, any time zone.",
+    "ctaLabel": "Start free · 50 leads",
+    "glow": 100,
+    "network": true,
+    "pipelineSpeed": 100
+  }/*EDITMODE-END*/;
+</script>
+<script src="leadzen.js"></script>
+<script src="leadzen-chatbot.js"></script>
+</body>
+</html>

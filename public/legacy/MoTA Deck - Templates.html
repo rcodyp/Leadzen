@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoTA — Template System (Sample)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Mukta:wght@300;400;500;600;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --t-display:128px; --t-title:72px; --t-sub:40px; --t-body:30px; --t-small:25px; --t-kick:24px;
+    --pad-x:112px; --pad-top:90px; --pad-bottom:120px;
+    /* earthy heritage palette */
+    --cream:#f3ebdd; --cream-2:#e9ddc6;
+    --ink:#241a12; --ink-soft:#4a3a28;
+    --terra:#b5532e; --terra-deep:#7d3219;
+    --forest:#2f4a32; --forest-deep:#1d3020;
+    --ochre:#d99a2b; --ochre-soft:#ecc066;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; background:#0b0805; }
+  deck-stage:not(:defined){ visibility:hidden; }
+  deck-stage > section{ overflow:hidden; background:var(--cream); color:var(--ink); font-family:'Mukta',sans-serif; -webkit-font-smoothing:antialiased; }
+
+  /* photo + dropzone */
+  .bg{ position:absolute; inset:0; }
+  .photo{ position:absolute; inset:0;
+    background:
+      radial-gradient(75% 60% at 22% 16%, rgba(236,192,102,.34), transparent 60%),
+      radial-gradient(90% 80% at 86% 96%, rgba(125,50,25,.6), transparent 62%),
+      linear-gradient(155deg,#8a4a26 0%,#5a2a18 48%,#241108 100%); }
+  .photo.forest{ background:
+      radial-gradient(75% 60% at 80% 14%, rgba(236,192,102,.26), transparent 60%),
+      radial-gradient(90% 80% at 12% 92%, rgba(29,48,32,.8), transparent 60%),
+      linear-gradient(150deg,#3c5a3a 0%,#23391f 50%,#11180d 100%); }
+  .weave{ position:absolute; inset:0; opacity:.14; mix-blend-mode:overlay; pointer-events:none;
+    background-image:
+      linear-gradient(45deg,var(--cream) 25%,transparent 25%,transparent 75%,var(--cream) 75%),
+      linear-gradient(45deg,var(--cream) 25%,transparent 25%,transparent 75%,var(--cream) 75%);
+    background-size:42px 42px; background-position:0 0,21px 21px; }
+  .scrim-b{ position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(0deg,rgba(20,12,7,.92) 4%,rgba(20,12,7,.4) 42%,rgba(20,12,7,.05) 70%); }
+  image-slot{ position:absolute; inset:0; width:auto; height:auto; }
+  image-slot::part(frame){ background:transparent; }
+  image-slot::part(empty){ color:rgba(243,235,221,.8); }
+
+  .frame{ position:absolute; inset:0; padding:var(--pad-top) var(--pad-x) var(--pad-bottom); display:flex; flex-direction:column; pointer-events:none; }
+
+  /* type primitives */
+  .kick{ font-family:'Mukta',sans-serif; font-weight:600; font-size:var(--t-kick); letter-spacing:.34em; text-transform:uppercase; color:var(--terra); align-self:flex-start; }
+  .kick.on-dark{ color:var(--ochre-soft); }
+  .title{ font-family:'Cormorant Garamond',serif; font-weight:600; line-height:1.02; font-size:var(--t-title); }
+  .display{ font-family:'Cormorant Garamond',serif; font-weight:600; line-height:.98; font-size:var(--t-display); }
+  .lead{ font-size:var(--t-sub); line-height:1.32; font-weight:300; color:var(--ink-soft); }
+  .body{ font-size:var(--t-body); line-height:1.5; font-weight:400; color:var(--ink-soft); }
+  .rule{ height:3px; width:120px; background:var(--ochre); border:0; }
+  .band{ height:14px; background:conic-gradient(from 90deg at 50% 0,transparent 0 135deg,var(--ochre) 135deg 225deg,transparent 225deg 360deg); background-size:28px 14px; }
+  .spacer{ flex:1; }
+
+  /* dark slides */
+  section.dark{ background:radial-gradient(90% 70% at 12% 10%,rgba(217,154,43,.16),transparent 55%),linear-gradient(150deg,var(--forest) 0%,var(--forest-deep) 100%); color:var(--cream); }
+  section.dark .lead{ color:rgba(243,235,221,.82); }
+  section.dark .title,section.dark .display{ color:var(--cream); }
+  section.terra{ background:radial-gradient(90% 70% at 85% 12%,rgba(236,192,102,.2),transparent 55%),linear-gradient(150deg,var(--terra) 0%,var(--terra-deep) 100%); color:var(--cream); }
+  section.terra .lead{ color:rgba(243,235,221,.85); }
+
+  /* footer */
+  .footer{ position:absolute; left:var(--pad-x); right:var(--pad-x); bottom:48px; display:flex; justify-content:space-between; align-items:center;
+    font-family:'Mukta',sans-serif; font-size:20px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); border-top:1px solid rgba(36,26,18,.22); padding-top:14px; }
+  section.dark .footer,section.terra .footer{ color:rgba(243,235,221,.7); border-top-color:rgba(243,235,221,.25); }
+  .footer .r{ color:var(--terra); font-weight:600; }
+  section.dark .footer .r,section.terra .footer .r{ color:var(--ochre-soft); }
+
+  /* stat grid */
+  .stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:30px 80px; }
+  .stats .n{ font-family:'Cormorant Garamond',serif; font-weight:700; font-size:118px; line-height:.9; color:var(--ochre); }
+  .stats .t{ font-size:27px; color:rgba(243,235,221,.82); margin-top:6px; }
+
+  /* pillar 4-part */
+  .four{ display:grid; grid-template-columns:1fr 1fr; gap:34px 70px; }
+  .four .lbl{ font-family:'Mukta'; font-weight:600; font-size:23px; letter-spacing:.14em; text-transform:uppercase; color:var(--terra); margin-bottom:8px; }
+  .four p{ margin:0; font-size:26px; line-height:1.4; color:var(--ink-soft); }
+
+  /* two-beat concept */
+  .beat .lbl{ font-family:'Mukta'; font-weight:600; font-size:23px; letter-spacing:.14em; text-transform:uppercase; color:var(--terra); margin-bottom:10px; }
+  .beat p{ margin:0 0 6px; }
+
+  /* table */
+  table.cmp{ width:100%; border-collapse:collapse; font-size:26px; }
+  table.cmp th,table.cmp td{ text-align:left; padding:22px 26px; vertical-align:top; border-bottom:1px solid rgba(36,26,18,.16); }
+  table.cmp thead th{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:34px; color:var(--ink); border-bottom:3px solid var(--ochre); }
+  table.cmp tbody th{ font-family:'Mukta'; font-weight:600; font-size:21px; letter-spacing:.1em; text-transform:uppercase; color:var(--terra); width:200px; }
+  table.cmp td{ color:var(--ink-soft); }
+  table.cmp .c1{ background:rgba(217,154,43,.08); }
+
+  @media (prefers-reduced-motion:no-preference){
+    [data-deck-active] .anim{ animation:rise .6s both; }
+    [data-deck-active] .anim2{ animation:rise .6s .12s both; }
+    [data-deck-active] .anim3{ animation:rise .6s .24s both; }
+    @keyframes rise{ from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+  }
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+  <!-- TEMPLATE: COVER (slide 1) -->
+  <section data-label="Cover" data-screen-label="Cover">
+    <div class="bg photo"></div><div class="weave"></div>
+    <image-slot id="m-cover" placeholder="Drag a hero photo — tribal subject, heritage-to-future" fit="cover"></image-slot>
+    <div class="scrim-b"></div>
+    <div class="frame">
+      <p class="kick on-dark anim">Presentation · Launching to</p>
+      <p class="lead anim" style="margin:10px 0 0; color:var(--ochre-soft); font-size:30px; letter-spacing:.06em;">Ministry of Tribal Affairs, Government of India</p>
+      <div class="spacer"></div>
+      <h1 class="display anim2" style="max-width:18ch;">From Tribal Heritage<br>to Future Leadership.</h1>
+      <div class="band anim2" style="width:300px; margin:26px 0 0;"></div>
+      <p class="lead anim3" style="margin:26px 0 0; max-width:40ch;">Empowering Tribal Communities for Viksit Bharat 2047.</p>
+      <div class="spacer"></div>
+      <p class="anim3" style="margin:0; font-family:'Mukta'; font-size:22px; letter-spacing:.1em; color:rgba(243,235,221,.7);">BY DEGREE 360 SOLUTIONS PVT. LTD. &nbsp;·&nbsp; GeM BID GEM/2026/B/7541452 &nbsp;·&nbsp; CLAUSES 4.2.5 / 4.2.6 / 4.2.7</p>
+    </div>
+  </section>
+
+  <!-- TEMPLATE: SECTION DIVIDER (slide 5) -->
+  <section data-label="Part 1 Divider" data-screen-label="Part 1 Divider">
+    <div class="bg photo forest"></div><div class="weave"></div>
+    <image-slot id="m-div" placeholder="Drag a photo — landscape / forest / community, wide" fit="cover"></image-slot>
+    <div class="scrim-b"></div>
+    <div class="frame">
+      <p class="kick on-dark anim">Part 1</p>
+      <div class="band anim" style="width:200px; margin:22px 0 0;"></div>
+      <div class="spacer"></div>
+      <h2 class="display anim2" style="max-width:16ch;">A Communication Strategy</h2>
+      <p class="lead anim3" style="margin:24px 0 0; max-width:42ch;">From Tribal Heritage to Future Leadership — empowering tribal communities for Viksit Bharat 2047.</p>
+    </div>
+  </section>
+
+  <!-- TEMPLATE: STAT / NUMBERS (slide 11) -->
+  <section class="dark" data-label="The Numbers" data-screen-label="Why This Matters — The Numbers">
+    <div class="frame">
+      <p class="kick on-dark anim">Why This Matters</p>
+      <h2 class="title anim2" style="margin:18px 0 0; max-width:26ch;">The scale Viksit Bharat 2047 has been waiting to tell.</h2>
+      <div class="spacer"></div>
+      <div class="stats anim3">
+        <div><div class="n">104M</div><div class="t">citizens</div></div>
+        <div><div class="n">700+</div><div class="t">tribal communities</div></div>
+        <div><div class="n">22+</div><div class="t">constitutional languages</div></div>
+        <div><div class="n">5,000<span style="font-size:54px;">+ yrs</span></div><div class="t">of ecological &amp; cultural knowledge</div></div>
+      </div>
+      <div class="footer"><span>Degree 360 · Ministry of Tribal Affairs</span><span class="r">Part 1 · 11 / 150</span></div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE: PILLAR / FRAMEWORK (slide 13) -->
+  <section data-label="Pillar 1 — Heritage" data-screen-label="Pillar 1 — Heritage">
+    <div class="frame">
+      <p class="kick anim">Pillar 1 · The Four Narrative Pillars</p>
+      <h2 class="title anim2" style="margin:14px 0 6px; font-size:84px;">Heritage</h2>
+      <hr class="rule anim2" style="margin:8px 0 40px;">
+      <div class="four anim3">
+        <div><div class="lbl">The Communication Objective</div><p>Establish tribal communities as custodians of India's oldest living knowledge systems — language, craft, ecological wisdom, and cultural identity.</p></div>
+        <div><div class="lbl">The Core Message</div><p>This is not heritage to be displayed in a museum. This is the foundation Viksit Bharat is built on.</p></div>
+        <div><div class="lbl">The Tone</div><p>Proud. Declarative. Rooted in fact — not nostalgia.</p></div>
+        <div><div class="lbl">What We Communicate</div><p>700+ tribes. 22+ constitutional languages. Centuries of agricultural, ecological, and craft knowledge — actively practiced, not archived.</p></div>
+      </div>
+      <div class="footer"><span>Degree 360 · Ministry of Tribal Affairs</span><span class="r">Part 1 · 13 / 150</span></div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE: CONCEPT-NOTE (slide 24) -->
+  <section data-label="Reel — Conceptualization" data-screen-label="Reel — Conceptualization">
+    <div class="frame">
+      <p class="kick anim">Element 1 · Reel</p>
+      <h2 class="title anim2" style="margin:14px 0 34px;">Conceptualization</h2>
+      <div class="beat anim3" style="max-width:46ch;">
+        <div class="lbl">The Idea</div>
+        <p class="body">One real moment, told in real time, with no narration crutch — visuals and sound carry the story. Built for platforms where attention is earned in the first two seconds, not given.</p>
+      </div>
+      <div class="beat anim3" style="margin-top:40px; max-width:46ch;">
+        <div class="lbl">Why This Concept Works</div>
+        <p class="body">No voiceover means no translation barrier and no risk of tone mismatch. The story is carried entirely by what the viewer sees and hears in the moment — a stronger test of whether the visual idea itself is strong enough to hold attention.</p>
+      </div>
+      <div class="footer"><span>Degree 360 · Ministry of Tribal Affairs</span><span class="r">Clause 4.2.5 · 24 / 150</span></div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE: PRODUCTION-SPEC (slide 25) -->
+  <section class="dark" data-label="Reel — Production Quality" data-screen-label="Reel — Production Quality">
+    <div class="frame">
+      <p class="kick on-dark anim">Element 1 · Reel</p>
+      <h2 class="title anim2" style="margin:14px 0 34px;">Production Quality</h2>
+      <p class="lead anim3" style="max-width:44ch;">Shot on professional-grade equipment with colour grading, sound design, and platform-specific aspect ratios (9:16) for native feed performance.</p>
+      <div class="beat anim3" style="margin-top:40px; max-width:48ch;">
+        <div class="lbl" style="color:var(--ochre-soft);">Technical Specifications</div>
+        <p class="body" style="color:rgba(243,235,221,.82);">4K source footage, graded for consistent skin tone and colour temperature across cuts. Sound mixed for mobile-speaker playback first, headphone second — the reverse of cinema priorities, and the correct priority for this format.</p>
+      </div>
+      <div class="footer"><span>Degree 360 · Ministry of Tribal Affairs</span><span class="r">Clause 4.2.5 · 25 / 150</span></div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE: TAGLINE / DEVANAGARI (slide 56) -->
+  <section class="terra" data-label="Campaign Tagline" data-screen-label="The Campaign Tagline">
+    <div class="frame">
+      <p class="kick on-dark anim">The Campaign Tagline</p>
+      <div class="spacer"></div>
+      <h2 class="anim2" style="margin:0; font-family:'Tiro Devanagari Hindi',serif; font-size:118px; line-height:1.1; color:var(--cream);">जड़ों से उड़ान तक</h2>
+      <p class="anim2" style="margin:18px 0 0; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:52px; color:var(--ochre-soft);">From Roots to Flight — Viksit Bharat 2047</p>
+      <div class="band anim3" style="width:220px; margin:34px 0 0;"></div>
+      <p class="lead anim3" style="margin:30px 0 0; max-width:46ch;">Roots signal heritage, ancestry, and ecological knowledge. Flight signals leadership, aspiration, and forward motion. Together, they hold the entire brief in four words.</p>
+      <div class="spacer"></div>
+      <div class="footer"><span>Degree 360 · Ministry of Tribal Affairs</span><span class="r">Clause 4.2.6 · 56 / 150</span></div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE: COMPARISON TABLE (slide 124) -->
+  <section data-label="Route Comparison" data-screen-label="Route 1 vs Route 2 — At a Glance">
+    <div class="frame">
+      <p class="kick anim">Clause 4.2.6 · Campaign Routes</p>
+      <h2 class="title anim2" style="margin:12px 0 26px;">Route 1 vs Route 2 — At a Glance</h2>
+      <table class="cmp anim3">
+        <thead><tr><th></th><th class="c1">Route 1 — "Roots to Flight"</th><th>Route 2 — "Heritage to Development"</th></tr></thead>
+        <tbody>
+          <tr><th>Creative device</th><td class="c1">Poetic, sequential, narrative-led</td><td>Declarative, paired, statement-led</td></tr>
+          <tr><th>Visual grammar</th><td class="c1">Continuous transformation in one frame</td><td>Split-frame / paired composition</td></tr>
+          <tr><th>Best suited for</th><td class="c1">An emotionally driven, story-first campaign</td><td>A faster-reading, headline-first campaign</td></tr>
+          <tr><th>Tone</th><td class="c1">Cinematic, aspirational</td><td>Direct, confident</td></tr>
+        </tbody>
+      </table>
+      <p class="body anim3" style="margin:26px 0 0;">Both routes share the same four pillars, the same factual foundation, and the same scheme integration — only the creative device differs.</p>
+      <div class="footer"><span>Degree 360 · Ministry of Tribal Affairs</span><span class="r">Clause 4.2.6 · 124 / 150</span></div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE: CLOSING STATEMENT (slide 126) -->
+  <section class="dark" data-label="Closing" data-screen-label="Section Closing">
+    <div class="frame" style="align-items:flex-start;">
+      <p class="kick on-dark anim">Two Routes · One Truth</p>
+      <div class="spacer"></div>
+      <h2 class="display anim2" style="max-width:20ch;">Heritage is not behind India's future.<br>It is inside it.</h2>
+      <div class="band anim3" style="width:240px; margin:34px 0 0;"></div>
+      <div class="spacer"></div>
+    </div>
+  </section>
+
+</deck-stage>
+<script src="image-slot.js"></script>
+<script src="deck-stage.js"></script>
+</body>
+</html>
